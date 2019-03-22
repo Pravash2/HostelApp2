@@ -14,6 +14,8 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import axios from "axios";
+import setAuthToken from "./utils/setAuthToken";
+import jwt_decode from "jwt-decode";
 
 const styles = theme => ({
   main: {
@@ -78,15 +80,19 @@ class SignIn extends React.Component {
     };
     axios
       .post(`http://localhost:3000/${this.props.match.params.id}/login`, data)
-      .then(function(response) {
-        localStorage.setItem("token", response.data.token); // write
-        console.log(localStorage.getItem("token")); // read
+      .then(res => {
+        // Save to localStorage
+        const { token } = res.data;
+        // Set token to ls
+        localStorage.setItem("jwtToken", token);
+        // Set token to Auth header
+        setAuthToken(token);
+        // Decode token to get user data
+        const decoded = jwt_decode(token);
+        console.log(decoded);
       })
-      .catch(function(error) {
-        console.log(error);
-        alert(
-          "Sorry! Server is not able to process this request at the moment."
-        );
+      .catch(function(err) {
+        alert(err);
       });
   };
 
