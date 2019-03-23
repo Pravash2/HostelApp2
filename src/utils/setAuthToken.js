@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const setAuthToken = token => {
+const setAuthToken = () => {
+  const token = localStorage.getItem("jwtToken");
   if (token) {
     // Apply to every request
     axios.defaults.headers.common["Authorization"] = token;
