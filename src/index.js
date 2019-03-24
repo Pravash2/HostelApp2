@@ -6,6 +6,10 @@ import "./styles.css";
 import App from "./App";
 import Login from "./Login";
 import Student from "./Student/Student";
+import Parent from "./Parent/Parent";
+import Mentor from "./Mentor/Mentor";
+import Warden from "./Warden/Warden";
+import securityGuard from "./SecurityGuard/SecurityGuard";
 
 const routing = (
   <Router>
@@ -14,10 +18,10 @@ const routing = (
         <Route exact path="/" component={App} />
         <Route path="/:id/login" component={Login} />
         <Route path="/student" component={Student} />
-        <Route path="/parent" component={Student} />
-        <Route path="/mentor" component={Student} />
-        <Route path="/warden" component={Student} />
-        <Route path="/securityGuard" component={Student} />
+        <Route path="/parent" component={Parent} />
+        <Route path="/mentor" component={Mentor} />
+        <Route path="/warden" component={Warden} />
+        <Route path="/securityGuard" component={securityGuard} />
       </Switch>
     </div>
   </Router>
