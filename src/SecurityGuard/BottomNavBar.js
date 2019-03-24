@@ -54,7 +54,7 @@ class FullWidthTabs extends React.Component {
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth">
-            <Tab label="E/N" />
+            <Tab label="Pass" />
             <Tab label="Food" />
             <Tab label="Pass" />
           </Tabs>

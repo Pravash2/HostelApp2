@@ -53,9 +53,8 @@ class FullWidthTabs extends React.Component {
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth">
-            <Tab label="E/N" />
-            <Tab label="Food" />
             <Tab label="Pass" />
+            <Tab label="Food" />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -66,7 +65,6 @@ class FullWidthTabs extends React.Component {
             <Card />
           </TabContainer>
           <TabContainer dir={theme.direction}>Card</TabContainer>
-          <TabContainer dir={theme.direction}>Item Three</TabContainer>
         </SwipeableViews>
       </div>
     );
