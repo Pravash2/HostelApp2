@@ -8,6 +8,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
 import Card from "./Card";
+import Add from "./Add";
 
 function TabContainer({ children, dir }) {
   return (
@@ -67,7 +68,9 @@ class FullWidthTabs extends React.Component {
             <Card />
           </TabContainer>
           <TabContainer dir={theme.direction}>Card</TabContainer>
-          <TabContainer dir={theme.direction}>Item Three</TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Add />
+          </TabContainer>
         </SwipeableViews>
       </div>
     );
