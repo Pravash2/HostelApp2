@@ -89,7 +89,7 @@ class SignIn extends React.Component {
         setAuthToken();
         // Decode token to get user data
         const decoded = jwt_decode(token);
-        this.props.history.push(`/${this.props.match.params.id}/${decoded.id}`);
+        this.props.history.push(`/${this.props.match.params.id}`);
       })
       .catch(function(err) {
         alert(err);

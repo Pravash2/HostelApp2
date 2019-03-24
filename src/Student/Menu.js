@@ -6,8 +6,14 @@ import Fade from "@material-ui/core/Fade";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import { Link } from "react-router-dom";
 
 class FadeMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClose3 = this.handleClose3.bind(this);
+  }
+
   state = {
     anchorEl: null
   };
@@ -18,6 +24,10 @@ class FadeMenu extends React.Component {
 
   handleClose = () => {
     this.setState({ anchorEl: null });
+  };
+
+  handleClose3 = event => {
+    localStorage.removeItem("jwtToken");
   };
 
   render() {
@@ -41,7 +51,9 @@ class FadeMenu extends React.Component {
           <MenuItem onClick={this.handleClose}>Fee Details</MenuItem>
           <MenuItem onClick={this.handleClose}>Report</MenuItem>
           <MenuItem onClick={this.handleClose}>Pass Status</MenuItem>
-          <MenuItem onClick={this.handleClose3}>Info</MenuItem>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <MenuItem onClick={this.handleClose3}>Logout</MenuItem>
+          </Link>
         </Menu>
       </div>
     );
