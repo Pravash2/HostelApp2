@@ -40,7 +40,6 @@ class SimpleCard extends React.Component {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
     if (this.state.pass !== "") {
-      console.log("helo", this.state.pass);
       return (
         <Card className={classes.card}>
           <CardContent>
@@ -48,22 +47,21 @@ class SimpleCard extends React.Component {
               className={classes.title}
               color="textSecondary"
               gutterBottom>
-              Word of the Day
+              {this.state.wardenApproval ? "Approve" : "Not Approve"}
             </Typography>
             <Typography variant="h5" component="h2">
               {this.state.pass.studentDetail.name}
             </Typography>
             <Typography className={classes.pos} color="textSecondary">
-              adjective
+              {`${this.state.pass.inDate.substring(
+                0,
+                10
+              )} / ${this.state.pass.outDate.substring(0, 10)}`}
             </Typography>
-            <Typography component="p">
-              well meaning and kindly.
-              <br />
-              {'"a benevolent smile"'}
-            </Typography>
+            <Typography component="p">{this.state.pass.purpose}</Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Learn More</Button>
+            <Button size="small">Extend</Button>
           </CardActions>
         </Card>
       );
