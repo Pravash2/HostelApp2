@@ -37,7 +37,7 @@ class SimpleCard extends React.Component {
   }
   componentDidMount() {
     axios
-      .get(`http://localhost:3000/securityguard/pass`)
+      .get(`https://hostelapp2.herokuapp.com/securityguard/pass`)
       .then(res => this.setState({ pass: res.data[0] }))
       .catch(err => console.log(err));
   }

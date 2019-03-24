@@ -28,7 +28,7 @@ class Add extends React.Component {
   handleSubmit1(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/student/addParent", {
+      .post("https://hostelapp2.herokuapp.com/student/addParent", {
         parentId: this.state.parent
       })
       .then(res => this.setState({ result: res.data }))
@@ -38,7 +38,7 @@ class Add extends React.Component {
   handleSubmit2(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/student/addMentor", {
+      .post("https://hostelapp2.herokuapp.com/student/addMentor", {
         employeeId: this.state.mentor
       })
       .then(res => this.setState({ result: res.data }))
@@ -47,7 +47,7 @@ class Add extends React.Component {
   handleSubmit3(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/student/addWarden", {
+      .post("https://hostelapp2.herokuapp.com/student/addWarden", {
         employeeId: this.state.warden
       })
       .then(res => this.setState({ result: res.data }))

@@ -28,7 +28,7 @@ class Add extends React.Component {
   handleSubmit1(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/parent/register", {
+      .post("https://hostelapp2.herokuapp.com/parent/register", {
         name: this.state.name,
         email: this.state.email,
         phoneNo: this.state.phoneNo,
@@ -43,7 +43,7 @@ class Add extends React.Component {
   handleSubmit2(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/mentor/register", {
+      .post("https://hostelapp2.herokuapp.com/mentor/register", {
         name: this.state.name,
         email: this.state.email,
         phoneNo: this.state.phoneNo,
@@ -57,7 +57,7 @@ class Add extends React.Component {
   handleSubmit3(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/student/register", {
+      .post("https://hostelapp2.herokuapp.com/student/register", {
         name: this.state.name,
         password: this.state.password,
         registrationNumber: this.state.registrationNumber,

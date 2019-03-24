@@ -79,7 +79,10 @@ class SignIn extends React.Component {
       password: this.state.password
     };
     axios
-      .post(`http://localhost:3000/${this.props.match.params.id}/login`, data)
+      .post(
+        `https://hostelapp2.herokuapp.com/${this.props.match.params.id}/login`,
+        data
+      )
       .then(res => {
         // Save to localStorage
         const { token } = res.data;

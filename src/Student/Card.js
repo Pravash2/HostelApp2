@@ -32,7 +32,7 @@ class SimpleCard extends React.Component {
   };
   componentDidMount() {
     axios
-      .get(`http://localhost:3000/student/pass`)
+      .get(`https://hostelapp2.herokuapp.com/student/pass`)
       .then(res => this.setState({ pass: res.data }))
       .catch(err => console.log(err));
   }

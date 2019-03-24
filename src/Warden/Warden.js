@@ -12,7 +12,7 @@ class App extends React.Component {
   componentDidMount() {
     setAuthToken();
     axios
-      .get(`http://localhost:3000/parent/current`)
+      .get(`https://hostelapp2.herokuapp.com/parent/current`)
       .then(res => this.setState({ student: res.data }))
       .catch(err => console.log(err));
   }

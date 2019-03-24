@@ -39,19 +39,19 @@ class SimpleCard extends React.Component {
   }
   componentDidMount() {
     axios
-      .get(`http://localhost:3000/mentor/pass`)
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass`)
       .then(res => this.setState({ pass: res.data[0] }))
       .catch(err => console.log(err));
   }
   approve(event) {
     axios
-      .get(`http://localhost:3000/mentor/pass/yes/${this.state.pass._id}`)
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${this.state.pass._id}`)
       .then(res => this.setState({ pass: res.data }))
       .catch(err => console.log(err));
   }
   decline(event) {
     axios
-      .get(`http://localhost:3000/mentor/pass/no/${this.state.pass._id}`)
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${this.state.pass._id}`)
       .then(res => this.setState({ pass: res.data }))
       .catch(err => console.log(err));
   }

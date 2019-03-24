@@ -18,7 +18,7 @@ class App extends React.Component {
   handleSubmit1(event) {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/student/pass", this.state)
+      .post("https://hostelapp2.herokuapp.com/student/pass", this.state)
       .then(res => this.setState({ result: res.data }))
       .catch(err => console.log(err));
   }
