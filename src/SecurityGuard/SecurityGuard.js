@@ -12,7 +12,7 @@ class App extends React.Component {
   componentDidMount() {
     setAuthToken();
     axios
-      .get(`http://localhost:3000/parent/current`)
+      .get(`http://localhost:3000/securityguard/current`)
       .then(res => this.setState({ student: res.data }))
       .catch(err => console.log(err));
   }

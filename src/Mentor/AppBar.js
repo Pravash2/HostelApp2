@@ -41,7 +41,11 @@ function ButtonAppBar(props) {
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
             {props.student.name}
+            <Typography className={classes.pos} color="inherit">
+              {props.student.type}
+            </Typography>
           </Typography>
+
           <IconButton
             className={classes.menuButton}
             style={{ padding: 0, margin: 0, color: "white" }}>
