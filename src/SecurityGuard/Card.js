@@ -46,47 +46,46 @@ class SimpleCard extends React.Component {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
     console.log(this.state.pass);
-    if (this.state.pass !== "") {
-      if (this.state.pass.parentApproval)
-        return (
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography variant="h5" component="h2">
-                {this.state.pass.studentDetail.name}
-              </Typography>
+    if (this.state.pass) {
+      return (
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography variant="h5" component="h2">
+              {this.state.pass.studentDetail.name}
+            </Typography>
 
+            <Typography className={classes.pos} color="textSecondary">
+              {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
               <Typography className={classes.pos} color="textSecondary">
-                {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
-                <Typography className={classes.pos} color="textSecondary">
-                  {`${this.state.pass.studentDetail.branch} ${
-                    this.state.pass.studentDetail.group
-                  } ${this.state.pass.studentDetail.section} ${
-                    this.state.pass.studentDetail.year
-                  }`}
-                </Typography>
+                {`${this.state.pass.studentDetail.branch} ${
+                  this.state.pass.studentDetail.group
+                } ${this.state.pass.studentDetail.section} ${
+                  this.state.pass.studentDetail.year
+                }`}
               </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                {`${this.state.pass.studentDetail.contactNumber}`}
-              </Typography>
-              <Typography component="p">{`PURPOSE : ${
-                this.state.pass.purpose
-              }`}</Typography>
-              <br />
-              <Typography variant="h5" component="h4">{`${
-                this.state.pass.wardenApproval ? "Approved" : "Not Approved"
-              }`}</Typography>
-              <Typography variant="h6" component="h1">
-                Date{" "}
-                {`${this.state.pass.inDate.substring(
-                  0,
-                  10
-                )} / ${this.state.pass.outDate.substring(0, 10)}`}
-              </Typography>
-            </CardContent>
-          </Card>
-        );
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+              {`${this.state.pass.studentDetail.contactNumber}`}
+            </Typography>
+            <Typography component="p">{`PURPOSE : ${
+              this.state.pass.purpose
+            }`}</Typography>
+            <br />
+            <Typography variant="h5" component="h4">{`${
+              this.state.pass.wardenApproval ? "Approved" : "Not Approved"
+            }`}</Typography>
+            <Typography variant="h6" component="h1">
+              Date{" "}
+              {`${this.state.pass.inDate.substring(
+                0,
+                10
+              )} / ${this.state.pass.outDate.substring(0, 10)}`}
+            </Typography>
+          </CardContent>
+        </Card>
+      );
     }
-    return <div>Loading</div>;
+    return <div>Not Approaval Found</div>;
   }
 }
 SimpleCard.propTypes = {
