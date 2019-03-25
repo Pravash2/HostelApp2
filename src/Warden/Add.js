@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import axios from "axios";
 
@@ -33,7 +34,7 @@ class Add extends React.Component {
         phoneNo: this.state.phoneNo,
         password: this.state.password,
         parentId: this.state.parentId,
-        type: this.state.type
+        type: "parent"
       })
       .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
       .catch(err => console.log(err));
@@ -49,7 +50,7 @@ class Add extends React.Component {
         phoneNo: this.state.phoneNo,
         password: this.state.password,
         employeeId: this.state.employeeId,
-        type: this.state.type
+        type: "mentor"
       })
       .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
       .catch(err => console.log(err));
@@ -68,7 +69,7 @@ class Add extends React.Component {
         course: this.state.course,
         group: this.state.group,
         section: this.state.section,
-        type: this.state.type,
+        type: "student",
         contactNumber: this.state.contactNumber
       })
       .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
@@ -77,6 +78,7 @@ class Add extends React.Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
       <div style={{ textAlign: "center" }}>
         <h1>Parent</h1>
@@ -133,16 +135,7 @@ class Add extends React.Component {
             id="parentId"
             type="number"
           />
-          <br />
-          <TextField
-            fullWidth
-            color="primary"
-            onChange={this.handleChange}
-            variant="outlined"
-            label="Type"
-            name="parent"
-            id="type"
-          />
+
           <br />
           <br />
           <Button
@@ -209,16 +202,7 @@ class Add extends React.Component {
             id="employeeId"
             type="number"
           />
-          <br />
-          <TextField
-            fullWidth
-            color="primary"
-            onChange={this.handleChange}
-            variant="outlined"
-            label="Type"
-            name="parent"
-            id="type"
-          />
+
           <br />
           <br />
           <Button
@@ -308,15 +292,7 @@ class Add extends React.Component {
             id="group"
           />
           <br />
-          <TextField
-            fullWidth
-            color="primary"
-            onChange={this.handleChange}
-            variant="outlined"
-            label="Type"
-            id="type"
-          />
-          <br />
+
           <TextField
             fullWidth
             color="primary"

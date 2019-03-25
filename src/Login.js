@@ -106,9 +106,10 @@ class SignIn extends React.Component {
       <main className={classes.main}>
         <CssBaseline />
         <Paper className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+          <Avatar
+            alt="Remy Sharp"
+            src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
+          />
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>

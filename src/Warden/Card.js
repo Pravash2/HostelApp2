@@ -82,7 +82,6 @@ class SimpleCard extends React.Component {
               <Typography variant="h5" component="h2">
                 {this.state.pass.studentDetail.name}
               </Typography>
-
               <Typography className={classes.pos} color="textSecondary">
                 {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
                 <Typography className={classes.pos} color="textSecondary">
