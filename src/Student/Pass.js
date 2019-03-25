@@ -30,11 +30,14 @@ class App extends React.Component {
   render() {
     return (
       <div style={{ textAlign: "center" }}>
-        <form onSubmit={this.handleSubmit1}>
+        <form
+          style={{ width: "80%", margin: "auto" }}
+          onSubmit={this.handleSubmit1}>
           <TextField
             id="indate"
             label="InDate"
             type="date"
+            fullWidth
             onChange={this.handleChange}
             defaultValue="2019-03-26"
             InputLabelProps={{
@@ -47,6 +50,7 @@ class App extends React.Component {
             id="outdate"
             label="Outdate"
             type="date"
+            fullWidth
             onChange={this.handleChange}
             defaultValue="2019-03-27"
             InputLabelProps={{
@@ -62,14 +66,15 @@ class App extends React.Component {
             label="Purpose"
             name="purpose"
             multiline
-            rowsMax="4"
+            rows="4"
             id="purpose"
+            fullWidth
           />
           <br />
           <br />
           <br />
           <Button
-            style={{ margin: "auto", width: "210px" }}
+            style={{ margin: "auto", width: "60%" }}
             color="primary"
             variant="outlined"
             type="submit">

@@ -1,5 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
+
 import Button from "@material-ui/core/Button";
 import SnackBar from "./SnackBar";
 
@@ -28,7 +29,7 @@ class Add extends React.Component {
   handleSubmit1(event) {
     event.preventDefault();
     axios
-      .post("https://hostelapp2.herokuapp.com/parent/register", {
+      .post("http://localhost:3000/parent/register", {
         name: this.state.name,
         email: this.state.email,
         phoneNo: this.state.phoneNo,
@@ -43,7 +44,7 @@ class Add extends React.Component {
   handleSubmit2(event) {
     event.preventDefault();
     axios
-      .post("https://hostelapp2.herokuapp.com/mentor/register", {
+      .post("http://localhost:3000/mentor/register", {
         name: this.state.name,
         email: this.state.email,
         phoneNo: this.state.phoneNo,
@@ -57,7 +58,7 @@ class Add extends React.Component {
   handleSubmit3(event) {
     event.preventDefault();
     axios
-      .post("https://hostelapp2.herokuapp.com/student/register", {
+      .post("http://localhost:3000/student/register", {
         name: this.state.name,
         password: this.state.password,
         registrationNumber: this.state.registrationNumber,
@@ -75,12 +76,16 @@ class Add extends React.Component {
   }
 
   render() {
-    if (this.state.result)
+    if (this.state.result) {
+      console.log(this.state.result);
       return (
         <div style={{ textAlign: "center" }}>
           <SnackBar result={this.state.result} />
-          <form onSubmit={this.handleSubmit1}>
+          <form
+            style={{ width: "80%", margin: "auto" }}
+            onSubmit={this.handleSubmit1}>
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -90,6 +95,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -99,6 +105,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -108,6 +115,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -118,6 +126,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -127,6 +136,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -146,6 +156,7 @@ class Add extends React.Component {
           <br />
           <form onSubmit={this.handleSubmit2}>
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -155,6 +166,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -164,6 +176,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -173,6 +186,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -183,6 +197,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -192,6 +207,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -210,8 +226,11 @@ class Add extends React.Component {
           </form>
           <br />
 
-          <form onSubmit={this.handleSubmit3}>
+          <form
+            style={{ width: "80%", margin: "auto" }}
+            onSubmit={this.handleSubmit3}>
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -220,6 +239,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -230,6 +250,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -238,6 +259,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -246,6 +268,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -254,6 +277,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -262,6 +286,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -270,6 +295,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -278,6 +304,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -286,6 +313,7 @@ class Add extends React.Component {
             />
             <br />
             <TextField
+              fullWidth
               color="primary"
               onChange={this.handleChange}
               variant="outlined"
@@ -305,10 +333,13 @@ class Add extends React.Component {
           <br />
         </div>
       );
+    }
     return (
       <div style={{ textAlign: "center" }}>
+        <h1>Parent</h1>
         <form onSubmit={this.handleSubmit1}>
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -318,6 +349,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -327,6 +359,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -336,6 +369,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -346,6 +380,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -355,6 +390,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -372,8 +408,10 @@ class Add extends React.Component {
           </Button>
         </form>
         <br />
+        <h1>Mentor</h1>
         <form onSubmit={this.handleSubmit2}>
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -383,6 +421,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -392,6 +431,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -401,6 +441,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -411,6 +452,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -420,6 +462,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -437,9 +480,10 @@ class Add extends React.Component {
           </Button>
         </form>
         <br />
-
+        <h1>Student</h1>
         <form onSubmit={this.handleSubmit3}>
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -448,6 +492,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -458,6 +503,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -466,6 +512,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -474,6 +521,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -482,6 +530,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -490,6 +539,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -498,6 +548,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -506,6 +557,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"
@@ -514,6 +566,7 @@ class Add extends React.Component {
           />
           <br />
           <TextField
+            fullWidth
             color="primary"
             onChange={this.handleChange}
             variant="outlined"

@@ -64,7 +64,6 @@ class SimpleCard extends React.Component {
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
-    console.log(this.state.pass);
     if (this.state.pass !== "") {
       if (this.state.pass.wardenApproval)
         return (

@@ -46,7 +46,7 @@ class SimpleSnackbar extends React.Component {
             "aria-describedby": "message-id"
           }}
           message={
-            <span id="message-id">{`Added ${this.props.result.type} as ${
+            <span id="message-id">{`Added {this.props.result.type} as {
               this.props.result.name
             }`}</span>
           }
