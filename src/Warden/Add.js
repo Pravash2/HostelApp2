@@ -1,8 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-
 import Button from "@material-ui/core/Button";
-import SnackBar from "./SnackBar";
 
 import axios from "axios";
 
@@ -37,8 +35,9 @@ class Add extends React.Component {
         parentId: this.state.parentId,
         type: this.state.type
       })
-      .then(res => this.setState({ result: res.data }))
+      .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
       .catch(err => console.log(err));
+    window.location.reload();
   }
 
   handleSubmit2(event) {
@@ -52,8 +51,9 @@ class Add extends React.Component {
         employeeId: this.state.employeeId,
         type: this.state.type
       })
-      .then(res => this.setState({ result: res.data }))
+      .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
       .catch(err => console.log(err));
+    window.location.reload();
   }
   handleSubmit3(event) {
     event.preventDefault();
@@ -71,269 +71,12 @@ class Add extends React.Component {
         type: this.state.type,
         contactNumber: this.state.contactNumber
       })
-      .then(res => this.setState({ result: res.data }))
+      .then(res => alert(`${res.data.name} is added as ${res.data.type}`))
       .catch(err => console.log(err));
+    window.location.reload();
   }
 
   render() {
-    if (this.state.result) {
-      console.log(this.state.result);
-      return (
-        <div style={{ textAlign: "center" }}>
-          <SnackBar result={this.state.result} />
-          <form
-            style={{ width: "80%", margin: "auto" }}
-            onSubmit={this.handleSubmit1}>
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Name"
-              name="parent"
-              id="name"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Email"
-              name="parent"
-              id="email"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Phone No"
-              name="parent"
-              id="phoneNo"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Password"
-              name="parent"
-              type="password"
-              id="password"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Parent Id"
-              name="parent"
-              id="parentId"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Type"
-              name="parent"
-              id="type"
-            />
-            <br />
-            <Button
-              style={{ margin: "auto", width: "210px" }}
-              color="primary"
-              variant="outlined"
-              type="submit">
-              Add Parent
-            </Button>
-          </form>
-          <br />
-          <form onSubmit={this.handleSubmit2}>
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Name"
-              name="parent"
-              id="name"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Email"
-              name="parent"
-              id="email"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Phone No"
-              name="parent"
-              id="phoneNo"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Password"
-              name="parent"
-              id="password"
-              type="password"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Employee Id"
-              name="parent"
-              id="employeeId"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Type"
-              name="parent"
-              id="type"
-            />
-            <br />
-            <Button
-              style={{ margin: "auto", width: "210px" }}
-              color="primary"
-              variant="outlined"
-              type="submit">
-              Add Mentor
-            </Button>
-          </form>
-          <br />
-
-          <form
-            style={{ width: "80%", margin: "auto" }}
-            onSubmit={this.handleSubmit3}>
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Name"
-              id="name"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Password"
-              id="password"
-              type="password"
-              autoComplete="nope"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Registration Number"
-              id="registrationNumber"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Roll Number"
-              id="rollNumber"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Branch"
-              id="branch"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Year"
-              id="year"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Section"
-              id="section"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Group"
-              id="group"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Type"
-              id="type"
-            />
-            <br />
-            <TextField
-              fullWidth
-              color="primary"
-              onChange={this.handleChange}
-              variant="outlined"
-              label="Contact Number"
-              id="contactNumber"
-            />
-            <br />
-
-            <Button
-              style={{ margin: "auto", width: "210px" }}
-              color="primary"
-              variant="outlined"
-              type="submit">
-              Add Student
-            </Button>
-          </form>
-          <br />
-        </div>
-      );
-    }
     return (
       <div style={{ textAlign: "center" }}>
         <h1>Parent</h1>
@@ -366,6 +109,7 @@ class Add extends React.Component {
             label="Phone No"
             name="parent"
             id="phoneNo"
+            type="number"
           />
           <br />
           <TextField
@@ -387,6 +131,7 @@ class Add extends React.Component {
             label="Parent Id"
             name="parent"
             id="parentId"
+            type="number"
           />
           <br />
           <TextField
@@ -399,6 +144,7 @@ class Add extends React.Component {
             id="type"
           />
           <br />
+          <br />
           <Button
             style={{ margin: "auto", width: "210px" }}
             color="primary"
@@ -407,6 +153,7 @@ class Add extends React.Component {
             Add Parent
           </Button>
         </form>
+        <br />
         <br />
         <h1>Mentor</h1>
         <form onSubmit={this.handleSubmit2}>
@@ -438,6 +185,7 @@ class Add extends React.Component {
             label="Phone No"
             name="parent"
             id="phoneNo"
+            type="number"
           />
           <br />
           <TextField
@@ -459,6 +207,7 @@ class Add extends React.Component {
             label="Employee Id"
             name="parent"
             id="employeeId"
+            type="number"
           />
           <br />
           <TextField
@@ -471,6 +220,7 @@ class Add extends React.Component {
             id="type"
           />
           <br />
+          <br />
           <Button
             style={{ margin: "auto", width: "210px" }}
             color="primary"
@@ -479,6 +229,7 @@ class Add extends React.Component {
             Add Mentor
           </Button>
         </form>
+        <br />
         <br />
         <h1>Student</h1>
         <form onSubmit={this.handleSubmit3}>
@@ -536,6 +287,7 @@ class Add extends React.Component {
             variant="outlined"
             label="Year"
             id="year"
+            type="number"
           />
           <br />
           <TextField
@@ -572,9 +324,10 @@ class Add extends React.Component {
             variant="outlined"
             label="Contact Number"
             id="contactNumber"
+            type="number"
           />
           <br />
-
+          <br />
           <Button
             style={{ margin: "auto", width: "210px" }}
             color="primary"

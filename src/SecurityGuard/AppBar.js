@@ -40,9 +40,9 @@ function ButtonAppBar(props) {
             />
           </IconButton>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-            {props.student.name}
+            {props.student.name.toUpperCase()}
             <Typography className={classes.pos} color="inherit">
-              {props.student.type}
+              {props.student.type.toUpperCase()}
             </Typography>
           </Typography>
 
