@@ -29,44 +29,54 @@ class App extends React.Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit1}>
-        <TextField
-          id="indate"
-          label="Birthday"
-          type="date"
-          onChange={this.handleChange}
-          defaultValue="2019-03-26"
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <TextField
-          id="outdate"
-          label="Birthday"
-          type="date"
-          onChange={this.handleChange}
-          defaultValue="2019-03-27"
-          InputLabelProps={{
-            shrink: true
-          }}
-        />
-        <TextField
-          color="primary"
-          onChange={this.handleChange}
-          variant="outlined"
-          label="Purpose"
-          name="purpose"
-          id="purpose"
-        />
-        <br />
-        <Button
-          style={{ margin: "auto", width: "210px" }}
-          color="primary"
-          variant="outlined"
-          type="submit">
-          Add Parent
-        </Button>
-      </form>
+      <div style={{ textAlign: "center" }}>
+        <form onSubmit={this.handleSubmit1}>
+          <TextField
+            id="indate"
+            label="InDate"
+            type="date"
+            onChange={this.handleChange}
+            defaultValue="2019-03-26"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            id="outdate"
+            label="Outdate"
+            type="date"
+            onChange={this.handleChange}
+            defaultValue="2019-03-27"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
+          <br />
+          <br />
+          <TextField
+            color="primary"
+            onChange={this.handleChange}
+            variant="outlined"
+            label="Purpose"
+            name="purpose"
+            multiline
+            rowsMax="4"
+            id="purpose"
+          />
+          <br />
+          <br />
+          <br />
+          <Button
+            style={{ margin: "auto", width: "210px" }}
+            color="primary"
+            variant="outlined"
+            type="submit">
+            Submit
+          </Button>
+        </form>
+      </div>
     );
   }
 }
