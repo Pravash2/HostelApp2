@@ -38,54 +38,59 @@ class SimpleCard extends React.Component {
   componentDidMount() {
     axios
       .get(`https://hostelapp2.herokuapp.com/securityguard/pass`)
-      .then(res => this.setState({ pass: res.data[0] }))
+      .then(res =>
+        alert(`You ${res.wardenApproval ? "Approve" : "Not Approve"} It`)
+      )
       .catch(err => console.log(err));
   }
 
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
-    console.log(this.state.pass);
-    if (this.state.pass) {
-      return (
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="h5" component="h2">
-              {this.state.pass.studentDetail.name}
-            </Typography>
 
-            <Typography className={classes.pos} color="textSecondary">
-              {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
-              <Typography className={classes.pos} color="textSecondary">
-                {`${this.state.pass.studentDetail.branch} ${
-                  this.state.pass.studentDetail.group
-                } ${this.state.pass.studentDetail.section} ${
-                  this.state.pass.studentDetail.year
-                }`}
-              </Typography>
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              {`${this.state.pass.studentDetail.contactNumber}`}
-            </Typography>
-            <Typography component="p">{`PURPOSE : ${
-              this.state.pass.purpose
-            }`}</Typography>
-            <br />
-            <Typography variant="h5" component="h4">{`${
-              this.state.pass.wardenApproval ? "Approved" : "Not Approved"
-            }`}</Typography>
-            <Typography variant="h6" component="h1">
-              Date{" "}
-              {`${this.state.pass.inDate.substring(
-                0,
-                10
-              )} / ${this.state.pass.outDate.substring(0, 10)}`}
-            </Typography>
-          </CardContent>
-        </Card>
+    if (this.state.pass.length > 0) {
+      console.log(this.state.pass);
+      return (
+        <div>
+          {this.state.pass.map(pass => (
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography variant="h5" component="h2">
+                  {pass.studentDetail.name}
+                </Typography>
+
+                <Typography className={classes.pos} color="textSecondary">
+                  {`Roll Number : ${pass.studentDetail.rollNumber}`}
+                  <Typography className={classes.pos} color="textSecondary">
+                    {`${pass.studentDetail.branch} ${
+                      pass.studentDetail.group
+                    } ${pass.studentDetail.section} ${pass.studentDetail.year}`}
+                  </Typography>
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`${pass.studentDetail.contactNumber}`}
+                </Typography>
+                <Typography component="p">{`PURPOSE : ${
+                  pass.purpose
+                }`}</Typography>
+                <br />
+                <Typography variant="h5" component="h4">{`${
+                  pass.wardenApproval ? "Approved" : "Not Approved"
+                }`}</Typography>
+                <Typography variant="h6" component="h1">
+                  Date{" "}
+                  {`${pass.inDate.substring(0, 10)} / ${pass.outDate.substring(
+                    0,
+                    10
+                  )}`}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       );
     }
-    return <div>Not Approaval Found</div>;
+    return <h1>Not Approaval Pass Found</h1>;
   }
 }
 SimpleCard.propTypes = {

@@ -58,8 +58,9 @@ class SimpleCard extends React.Component {
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
-    console.log(this.state.pass);
+    
     if (this.state.pass !== "") {
+      if(this.state.pass);
       if (this.state.pass.parentApproval)
         return (
           <Card className={classes.card}>
@@ -112,6 +113,7 @@ class SimpleCard extends React.Component {
           </Card>
         );
       if (!this.state.pass.parentApproval)
+      if(this.state.pass);
         return (
           <Card className={classes.card}>
             <CardContent>
@@ -163,7 +165,7 @@ class SimpleCard extends React.Component {
           </Card>
         );
     }
-    return <div>Loading</div>;
+    return <div><h1>No Pass Found</h1></div>;
   }
 }
 SimpleCard.propTypes = {

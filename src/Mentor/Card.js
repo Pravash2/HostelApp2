@@ -45,20 +45,28 @@ class SimpleCard extends React.Component {
   }
   approve(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${this.state.pass._id}`)
+      .get(
+        `https://hostelapp2.herokuapp.com/mentor/pass/yes/${
+          this.state.pass._id
+        }`
+      )
       .then(res => this.setState({ pass: res.data }))
       .catch(err => console.log(err));
   }
   decline(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${this.state.pass._id}`)
-      .then(res => this.setState({ pass: res.data }))
+      .get(
+        `https://hostelapp2.herokuapp.com/mentor/pass/no/${this.state.pass._id}`
+      )
+      .then(res => alert(`You ${
+        res.mentorApporval ? "Approve" : "Not Approve"
+      } It`))
       .catch(err => console.log(err));
   }
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
-    console.log(this.state.pass);
+
     if (this.state.pass !== "") {
       if (this.state.pass.mentorApporval)
         return (

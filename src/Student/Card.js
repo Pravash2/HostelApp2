@@ -93,7 +93,7 @@ class SimpleCard extends React.Component {
         </Card>
       );
     }
-    return <div>Hello</div>;
+    return <div><h1>No Pass Found</h1></div>;
   }
 }
 SimpleCard.propTypes = {

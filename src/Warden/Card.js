@@ -65,95 +65,95 @@ class SimpleCard extends React.Component {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
     if (this.state.pass !== "") {
-      if(this.state.pass)
-      if (this.state.pass.wardenApproval)
-        return (
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography color="textSecondary" variant="h6" gutterBottom>
-                {this.state.wardenApproval ? "Approve" : "Not Approve"}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                Date{" "}
-                {`${this.state.pass.inDate.substring(
-                  0,
-                  10
-                )} / ${this.state.pass.outDate.substring(0, 10)}`}
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {this.state.pass.studentDetail.name}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
-                <Typography className={classes.pos} color="textSecondary">
-                  {`${this.state.pass.studentDetail.branch} ${
-                    this.state.pass.studentDetail.group
-                  } ${this.state.pass.studentDetail.section} ${
-                    this.state.pass.studentDetail.year
-                  }`}
+      if (this.state.pass)
+        if (this.state.pass.wardenApproval)
+          return (
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography color="textSecondary" variant="h6" gutterBottom>
+                  {this.state.wardenApproval ? "Approve" : "Not Approve"}
                 </Typography>
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                {`${this.state.pass.studentDetail.contactNumber}`}
-              </Typography>
-              <Typography component="p">{`PURPOSE : ${
-                this.state.pass.purpose
-              }`}</Typography>
-              <br />
-              <Typography variant="h6" component="p">{`You ${
-                this.state.pass.wardenApproval ? "Approve" : "Not Approve"
-              } It`}</Typography>
-            </CardContent>
-            <CardActions>
-              <Link to="/warden" style={{ textDecoration: "none" }}>
-                <Button onClick={this.approve} size="small">
-                  Approve
+                <Typography className={classes.pos} color="textSecondary">
+                  Date{" "}
+                  {`${this.state.pass.inDate.substring(
+                    0,
+                    10
+                  )} / ${this.state.pass.outDate.substring(0, 10)}`}
+                </Typography>
+                <Typography variant="h5" component="h2">
+                  {this.state.pass.studentDetail.name}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
+                  <Typography className={classes.pos} color="textSecondary">
+                    {`${this.state.pass.studentDetail.branch} ${
+                      this.state.pass.studentDetail.group
+                    } ${this.state.pass.studentDetail.section} ${
+                      this.state.pass.studentDetail.year
+                    }`}
+                  </Typography>
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`${this.state.pass.studentDetail.contactNumber}`}
+                </Typography>
+                <Typography component="p">{`PURPOSE : ${
+                  this.state.pass.purpose
+                }`}</Typography>
+                <br />
+                <Typography variant="h6" component="p">{`You ${
+                  this.state.pass.wardenApproval ? "Approve" : "Not Approve"
+                } It`}</Typography>
+              </CardContent>
+              <CardActions>
+                <Link to="/warden" style={{ textDecoration: "none" }}>
+                  <Button onClick={this.approve} size="small">
+                    Approve
+                  </Button>
+                </Link>
+                <Button onClick={this.decline} size="small">
+                  Decline
                 </Button>
-              </Link>
-              <Button onClick={this.decline} size="small">
-                Decline
-              </Button>
-            </CardActions>
-          </Card>
-        );
-      if(this.state.pass)
-      if (!this.state.pass.wardenApproval)
-        return (
-          <Card className={classes.card}>
-            <CardContent>
-              <Typography
-                className={classes.title}
-                color="textSecondary"
-                gutterBottom>
-                {this.state.wardenApproval ? "Approve" : "Not Approve"}
-              </Typography>
-              <Typography variant="h5" component="h2">
-                {this.state.pass.studentDetail.name}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                {`${this.state.pass.inDate.substring(
-                  0,
-                  10
-                )} / ${this.state.pass.outDate.substring(0, 10)}`}
-              </Typography>
-              <Typography component="p">{this.state.pass.purpose}</Typography>
-              <br />
-              <Typography variant="h6" component="p">{`You ${
-                this.state.pass.wardenApproval ? "Approve" : "Not Approve"
-              } It`}</Typography>
-            </CardContent>
-            <CardActions>
-              <Link to="/warden" style={{ textDecoration: "none" }}>
-                <Button onClick={this.approve} size="small">
-                  Approve
+              </CardActions>
+            </Card>
+          );
+      if (this.state.pass)
+        if (!this.state.pass.wardenApproval)
+          return (
+            <Card className={classes.card}>
+              <CardContent>
+                <Typography
+                  className={classes.title}
+                  color="textSecondary"
+                  gutterBottom>
+                  {this.state.wardenApproval ? "Approve" : "Not Approve"}
+                </Typography>
+                <Typography variant="h5" component="h2">
+                  {this.state.pass.studentDetail.name}
+                </Typography>
+                <Typography className={classes.pos} color="textSecondary">
+                  {`${this.state.pass.inDate.substring(
+                    0,
+                    10
+                  )} / ${this.state.pass.outDate.substring(0, 10)}`}
+                </Typography>
+                <Typography component="p">{this.state.pass.purpose}</Typography>
+                <br />
+                <Typography variant="h6" component="p">{`You ${
+                  this.state.pass.wardenApproval ? "Approve" : "Not Approve"
+                } It`}</Typography>
+              </CardContent>
+              <CardActions>
+                <Link to="/warden" style={{ textDecoration: "none" }}>
+                  <Button onClick={this.approve} size="small">
+                    Approve
+                  </Button>
+                </Link>
+                <Button onClick={this.decline} size="small">
+                  Decline
                 </Button>
-              </Link>
-              <Button onClick={this.decline} size="small">
-                Decline
-              </Button>
-            </CardActions>
-          </Card>
-        );
+              </CardActions>
+            </Card>
+          );
     }
     return <div>Loading</div>;
   }
