@@ -27,7 +27,8 @@ const styles = theme => ({
       width: 400,
       marginLeft: "auto",
       marginRight: "auto"
-    }
+    },
+    marginTop: "30%"
   },
   paper: {
     marginTop: theme.spacing.unit * 8,
@@ -101,7 +102,6 @@ class SignIn extends React.Component {
 
   render() {
     const { classes } = this.props;
-    console.log(this.state);
     return (
       <main className={classes.main}>
         <CssBaseline />
@@ -111,7 +111,7 @@ class SignIn extends React.Component {
             src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
           />
           <Typography component="h1" variant="h5">
-          {`${this.props.match.params.id.toUpperCase()} SIGN IN`}
+            {`${this.props.match.params.id.toUpperCase()} SIGN IN`}
           </Typography>
           <form onSubmit={this.handleSubmit} className={classes.form}>
             <FormControl margin="normal" required fullWidth>
@@ -122,6 +122,7 @@ class SignIn extends React.Component {
                 id="email"
                 name="email"
                 autoComplete="email"
+                autoFocus
               />
             </FormControl>
             <FormControl margin="normal" required fullWidth>
@@ -144,7 +145,8 @@ class SignIn extends React.Component {
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}>
+              className={classes.submit}
+            >
               Sign in
             </Button>
           </form>
