@@ -10,6 +10,8 @@ import InboxIcon from "@material-ui/icons/Inbox";
 import DraftsIcon from "@material-ui/icons/Drafts";
 import Avatar from "@material-ui/core/Avatar";
 
+import SnackBar from "./SnackBar";
+
 import Fade from "react-reveal/Fade";
 import Flip from "react-reveal/Flip";
 import Typist from "react-typist";
