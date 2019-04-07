@@ -79,6 +79,7 @@ class Add extends React.Component {
 
   render() {
     const { classes } = this.props;
+
     return (
       <div style={{ textAlign: "center" }}>
         <h1>Parent</h1>

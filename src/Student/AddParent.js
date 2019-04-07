@@ -161,25 +161,7 @@ class Add extends React.Component {
 				</form>
 				<br />
 
-				<form onSubmit={this.handleSubmit3}>
-					<TextField
-						color="primary"
-						onChange={this.handleChange}
-						variant="outlined"
-						label="Warden Employee Id"
-						name="warden"
-						id="warden"
-					/>
-					<br />
-					<Button
-						style={{ margin: "auto", width: "210px" }}
-						color="primary"
-						variant="outlined"
-						type="submit">
-						Add Warden
-					</Button>
-				</form>
-				<br />
+				
 			</div>
 		);
 	}
