@@ -48,8 +48,7 @@ class FadeMenu extends React.Component {
           onClose={this.handleClose}
           TransitionComponent={Fade}
           style={{ marginRight: "50px" }}>
-          <MenuItem onClick={this.handleClose}>Fee Details</MenuItem>
-          <MenuItem onClick={this.handleClose}>Report</MenuItem>
+          
           <MenuItem onClick={this.handleClose}>Pass Status</MenuItem>
           <Link to="/" style={{ textDecoration: "none" }}>
             <MenuItem onClick={this.handleClose3}>Logout</MenuItem>

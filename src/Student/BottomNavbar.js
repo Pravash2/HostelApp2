@@ -9,80 +9,80 @@ import Typography from "@material-ui/core/Typography";
 
 import Pass from "./Pass";
 import Card from "./Card";
-import Add from "./Add";
+import QrCode from "../QrCode/QrCode";
 
 function TabContainer({ children, dir }) {
-	return (
-		<Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-			{children}
-		</Typography>
-	);
+  return (
+    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+      {children}
+    </Typography>
+  );
 }
 
 TabContainer.propTypes = {
-	children: PropTypes.node.isRequired,
-	dir: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired,
+  dir: PropTypes.string.isRequired
 };
 
 const styles = theme => ({
-	root: {
-		backgroundColor: theme.palette.background.paper,
-		width: `${window.innerWidth}px`
-	}
+  root: {
+    backgroundColor: theme.palette.background.paper,
+    width: `${window.innerWidth}px`
+  }
 });
 
 class FullWidthTabs extends React.Component {
-	state = {
-		value: 0
-	};
+  state = {
+    value: 0
+  };
 
-	handleChange = (event, value) => {
-		this.setState({ value });
-	};
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
 
-	handleChangeIndex = index => {
-		this.setState({ value: index });
-	};
+  handleChangeIndex = index => {
+    this.setState({ value: index });
+  };
 
-	render() {
-		const { classes, theme } = this.props;
+  render() {
+    const { classes, theme } = this.props;
 
-		return (
-			<div className={classes.root}>
-				<AppBar position="static" color="default">
-					<Tabs
-						value={this.state.value}
-						onChange={this.handleChange}
-						indicatorColor="primary"
-						textColor="primary"
-						variant="fullWidth">
-						<Tab label="CREATe" />
-						<Tab label="PASS" />
-						<Tab label="ADD" />
-					</Tabs>
-				</AppBar>
-				<SwipeableViews
-					axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-					index={this.state.value}
-					onChangeIndex={this.handleChangeIndex}>
-					<TabContainer dir={theme.direction}>
-						<Pass />
-					</TabContainer>
-					<TabContainer dir={theme.direction}>
-						<Card />
-					</TabContainer>
-					<TabContainer dir={theme.direction}>
-						<Add />
-					</TabContainer>
-				</SwipeableViews>
-			</div>
-		);
-	}
+    return (
+      <div className={classes.root}>
+        <AppBar position="static" color="default">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleChange}
+            indicatorColor="primary"
+            textColor="primary"
+            variant="fullWidth">
+            <Tab label="Pass" />
+            <Tab label="food" />
+            <Tab label="Atendance" />
+          </Tabs>
+        </AppBar>
+        <SwipeableViews
+          axis={theme.direction === "rtl" ? "x-reverse" : "x"}
+          index={this.state.value}
+          onChangeIndex={this.handleChangeIndex}>
+          <TabContainer dir={theme.direction}>
+            <Pass />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <QrCode />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <QrCode />
+          </TabContainer>
+        </SwipeableViews>
+      </div>
+    );
+  }
 }
 
 FullWidthTabs.propTypes = {
-	classes: PropTypes.object.isRequired,
-	theme: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(FullWidthTabs);

@@ -17,6 +17,13 @@ import axios from "axios";
 import setAuthToken from "./utils/setAuthToken";
 import jwt_decode from "jwt-decode";
 
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ButtonLoader from "./utils/buttonLoader";
+import green from "@material-ui/core/colors/green";
+
+import { Link } from "react-router-dom";
+import Notifier, { openSnackbar } from "./SnackBar";
+
 const styles = theme => ({
   main: {
     width: "auto",
@@ -48,6 +55,35 @@ const styles = theme => ({
   },
   submit: {
     marginTop: theme.spacing.unit * 3
+  },
+  root: {
+    display: "flex",
+    alignItems: "center"
+  },
+  wrapper: {
+    margin: theme.spacing.unit,
+    position: "relative"
+  },
+  buttonSuccess: {
+    backgroundColor: green[500],
+    "&:hover": {
+      backgroundColor: green[700]
+    }
+  },
+  fabProgress: {
+    color: green[500],
+    position: "absolute",
+    top: -6,
+    left: -6,
+    zIndex: 1
+  },
+  buttonProgress: {
+    color: green[500],
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    marginTop: -12,
+    marginLeft: -12
   }
 });
 
@@ -59,7 +95,18 @@ class SignIn extends React.Component {
       email: "",
       password: ""
     };
+   
   }
+  state = {
+    loading: false,
+    success: false
+  };
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  handleButtonClick = () => {};
 
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
@@ -73,12 +120,31 @@ class SignIn extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    const app = "";
+    if (!this.state.loading) {
+      this.setState(
+        {
+          success: false,
+          loading: true
+        },
+        () => {
+          this.timer = setTimeout(() => {
+            this.setState({
+              loading: false,
+              success: true
+            });
+          }, 10000);
+        }
+      );
+    }
+
     const data = {
       registrationNumber: this.state.email,
       employeeId: this.state.email,
       parentId: this.state.email,
       password: this.state.password
     };
+
     axios
       .post(
         `https://hostelapp2.herokuapp.com/${this.props.match.params.id}/login`,
@@ -96,14 +162,18 @@ class SignIn extends React.Component {
         this.props.history.push(`/${this.props.match.params.id}`);
       })
       .catch(function(err) {
-        alert(err);
+        openSnackbar({
+          message: `err`
+        });
       });
   };
 
   render() {
+    const { loading, success } = this.state;
     const { classes } = this.props;
     return (
       <main className={classes.main}>
+        <Notifier />
         <CssBaseline />
         <Paper className={classes.paper}>
           <Avatar
@@ -122,9 +192,9 @@ class SignIn extends React.Component {
                 id="email"
                 name="email"
                 autoComplete="email"
-                autoFocus
               />
             </FormControl>
+
             <FormControl margin="normal" required fullWidth>
               <InputLabel htmlFor="password">Password</InputLabel>
               <Input
@@ -140,17 +210,53 @@ class SignIn extends React.Component {
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
+            {/* <Typography
+              variant="caption"
+              color="error"
+              gutterBottom
+              align="center">
+              Invalid User id and Password
+            </Typography> */}
             <Button
               type="submit"
               fullWidth
               variant="contained"
               color="primary"
-              className={classes.submit}
-            >
-              Sign in
+              disabled={loading}
+              className={classes.buttonClassname}>
+              Submit
+              {loading && (
+                <CircularProgress
+                  size={24}
+                  className={classes.buttonProgress}
+                />
+              )}
             </Button>
           </form>
         </Paper>
+
+        <div>
+          <Typography
+            style={{ textAlign: "center", marginTop: "10%" }}
+            component="h1"
+            variant="h5">
+            {`Not have Account Yet ?`}
+          </Typography>
+
+          <Link
+            style={{ textDecoration: "none" }}
+            to={`/${this.props.match.params.id}/register`}>
+            <Button
+              type="submit"
+              style={{ marginTop: "5%" }}
+              fullWidth
+              variant="outlined"
+              color="primary"
+              className={classes.buttonClassname}>
+              Register
+            </Button>
+          </Link>
+        </div>
       </main>
     );
   }
