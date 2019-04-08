@@ -23,6 +23,7 @@ import green from "@material-ui/core/colors/green";
 
 import { Link } from "react-router-dom";
 import Notifier, { openSnackbar } from "./SnackBar";
+import Fade from "react-reveal/Fade";
 
 const styles = theme => ({
   main: {
@@ -95,7 +96,6 @@ class SignIn extends React.Component {
       email: "",
       password: ""
     };
-   
   }
   state = {
     loading: false,
@@ -173,90 +173,92 @@ class SignIn extends React.Component {
     const { classes } = this.props;
     return (
       <main className={classes.main}>
-        <Notifier />
-        <CssBaseline />
-        <Paper className={classes.paper}>
-          <Avatar
-            alt="Remy Sharp"
-            src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
-          />
-          <Typography component="h1" variant="h5">
-            {`${this.props.match.params.id.toUpperCase()} SIGN IN`}
-          </Typography>
-          <form onSubmit={this.handleSubmit} className={classes.form}>
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="email">User Id</InputLabel>
-              <Input
-                value={this.state.email}
-                onChange={this.handleChange}
-                id="email"
-                name="email"
-                autoComplete="email"
-              />
-            </FormControl>
-
-            <FormControl margin="normal" required fullWidth>
-              <InputLabel htmlFor="password">Password</InputLabel>
-              <Input
-                value={this.state.password}
-                onChange={this.handleChange}
-                name="password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+        <Fade>
+          <Notifier />
+          <CssBaseline />
+          <Paper className={classes.paper}>
+            <Avatar
+              alt="Remy Sharp"
+              src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
             />
-            {/* <Typography
+            <Typography component="h1" variant="h5">
+              {`${this.props.match.params.id.toUpperCase()} SIGN IN`}
+            </Typography>
+            <form onSubmit={this.handleSubmit} className={classes.form}>
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="email">User Id</InputLabel>
+                <Input
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                  id="email"
+                  name="email"
+                  autoComplete="email"
+                />
+              </FormControl>
+
+              <FormControl margin="normal" required fullWidth>
+                <InputLabel htmlFor="password">Password</InputLabel>
+                <Input
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                  name="password"
+                  type="password"
+                  id="password"
+                  autoComplete="current-password"
+                />
+              </FormControl>
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              {/* <Typography
               variant="caption"
               color="error"
               gutterBottom
               align="center">
               Invalid User id and Password
             </Typography> */}
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              disabled={loading}
-              className={classes.buttonClassname}>
-              Submit
-              {loading && (
-                <CircularProgress
-                  size={24}
-                  className={classes.buttonProgress}
-                />
-              )}
-            </Button>
-          </form>
-        </Paper>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                disabled={loading}
+                className={classes.buttonClassname}>
+                Submit
+                {loading && (
+                  <CircularProgress
+                    size={24}
+                    className={classes.buttonProgress}
+                  />
+                )}
+              </Button>
+            </form>
+          </Paper>
 
-        <div>
-          <Typography
-            style={{ textAlign: "center", marginTop: "10%" }}
-            component="h1"
-            variant="h5">
-            {`Not have Account Yet ?`}
-          </Typography>
+          <div>
+            <Typography
+              style={{ textAlign: "center", marginTop: "10%" }}
+              component="h1"
+              variant="h5">
+              {`Not have Account Yet ?`}
+            </Typography>
 
-          <Link
-            style={{ textDecoration: "none" }}
-            to={`/${this.props.match.params.id}/register`}>
-            <Button
-              type="submit"
-              style={{ marginTop: "5%" }}
-              fullWidth
-              variant="outlined"
-              color="primary"
-              className={classes.buttonClassname}>
-              Register
-            </Button>
-          </Link>
-        </div>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={`/${this.props.match.params.id}/register`}>
+              <Button
+                type="submit"
+                style={{ marginTop: "5%" }}
+                fullWidth
+                variant="outlined"
+                color="primary"
+                className={classes.buttonClassname}>
+                Register
+              </Button>
+            </Link>
+          </div>
+        </Fade>
       </main>
     );
   }

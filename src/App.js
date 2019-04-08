@@ -47,12 +47,12 @@ function SimpleList(props) {
         alt="Remy Sharp"
         src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
       />
-      <Flip cascade>
+      <Fade top cascade>
         <h1 style={{ textAlign: "center" }}>Welcome to CVRCE</h1>
-      </Flip>
+      </Fade>
       <Typist stdTypingDelay={20} startDelay={2500}>
         <h3 style={{ textAlign: "center", color: "gray" }}>
-          Select Your Below Position
+          Select Your Position
         </h3>
       </Typist>
       <div className={classes.root}>

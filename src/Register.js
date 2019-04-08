@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import axios from "axios";
 
 import Notifier, { openSnackbar } from "./SnackBar";
+import Fade from "react-reveal/Fade";
 
 const style = {
   textfield: {
@@ -193,6 +194,7 @@ class Add extends React.Component {
           margin: "0 auto",
           marginTop: "10%"
         }}>
+        <Fade>
         <Notifier />
         {this.props.match.params.id == "parent" ? (
           <div>
@@ -610,6 +612,7 @@ class Add extends React.Component {
         ) : (
           ""
         )}
+        </Fade>
       </div>
     );
   }
