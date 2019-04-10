@@ -2,7 +2,7 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
-
+import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 
 import Notifier, { openSnackbar } from "./SnackBar";
@@ -10,16 +10,23 @@ import Fade from "react-reveal/Fade";
 
 const style = {
   textfield: {
-    marginTop: "2%"
+    marginTop: "3%"
   }
 };
 
 class Add extends React.Component {
-  state = {
-    mentor: "",
-    parent: "",
-    warden: ""
-  };
+  state = [
+    {
+      name: "",
+      add: "",
+      warden: ""
+    },
+    {
+      name: "",
+      add: "",
+      warden: ""
+    }
+  ];
   constructor(props) {
     super(props);
     this.handleSubmit1 = this.handleSubmit1.bind(this);
@@ -193,425 +200,433 @@ class Add extends React.Component {
           width: "80%",
           margin: "0 auto",
           marginTop: "10%"
-        }}>
+        }}
+      >
         <Fade>
-        <Notifier />
-        {this.props.match.params.id == "parent" ? (
-          <div>
-            <h1>Parent</h1>
-            <form onSubmit={this.handleSubmit1}>
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Name"
-                name="parent"
-                id="name"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Email"
-                name="parent"
-                id="email"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Phone No"
-                name="parent"
-                id="phoneNo"
-                type="number"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Password"
-                name="parent"
-                type="password"
-                id="password"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Parent Id"
-                name="parent"
-                id="parentId"
-                type="number"
-              />
+          <Notifier />
+          {this.props.match.params.id == "parent" ? (
+            <div>
+              <h1>Parent</h1>
+              <form onSubmit={this.handleSubmit1}>
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Name"
+                  name="parent"
+                  id="name"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Email"
+                  name="parent"
+                  id="email"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Phone No"
+                  name="parent"
+                  id="phoneNo"
+                  type="number"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Password"
+                  name="parent"
+                  type="password"
+                  id="password"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Parent Id"
+                  name="parent"
+                  id="parentId"
+              
+                />
 
-              <br />
-              <br />
-              <Button
-                style={{ margin: "auto", width: "210px" }}
-                color="primary"
-                variant="outlined"
-                type="submit">
-                Add Parent
-              </Button>
-            </form>
-          </div>
-        ) : (
-          ""
-        )}
-        {this.props.match.params.id == "mentor" ? (
-          <div>
-            <h1>Mentor</h1>
-            <form onSubmit={this.handleSubmit2}>
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Name"
-                name="parent"
-                id="name"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Email"
-                name="parent"
-                id="email"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Phone No"
-                name="parent"
-                id="phoneNo"
-                type="number"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Password"
-                name="parent"
-                id="password"
-                type="password"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Employee Id"
-                name="parent"
-                id="employeeId"
-                type="number"
-              />
+                <br />
+                <br />
+                <Button
+                  style={{ margin: "auto", width: "210px" }}
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                >
+                  Add Parent
+                </Button>
+              </form>
+            </div>
+          ) : (
+            ""
+          )}
+          {this.props.match.params.id == "mentor" ? (
+            <div>
+              <h1>Mentor</h1>
+              <form onSubmit={this.handleSubmit2}>
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Name"
+                  name="parent"
+                  id="name"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Email"
+                  name="parent"
+                  id="email"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Phone No"
+                  name="parent"
+                  id="phoneNo"
+                  type="number"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Password"
+                  name="parent"
+                  id="password"
+                  type="password"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Employee Id"
+                  name="parent"
+                  id="employeeId"
+                  type="number"
+                />
 
-              <br />
-              <br />
-              <Button
-                style={{ margin: "auto", width: "210px" }}
-                color="primary"
-                variant="outlined"
-                type="submit">
-                Add Mentor
-              </Button>
-            </form>
-          </div>
-        ) : (
-          ""
-        )}
-        {this.props.match.params.id == "student" ? (
-          <div>
-            <h1>Student</h1>
-            <form onSubmit={this.handleSubmit3}>
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Name"
-                id="name"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Password"
-                id="password"
-                type="password"
-                autoComplete="nope"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Registration Number"
-                id="registrationNumber"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Roll Number"
-                id="rollNumber"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Branch"
-                id="branch"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Year"
-                id="year"
-                type="number"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Section"
-                id="section"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Group"
-                id="group"
-              />
-              <br />
+                <br />
+                <br />
+                <Button
+                  style={{ margin: "auto", width: "210px" }}
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                >
+                  Add Mentor
+                </Button>
+              </form>
+            </div>
+          ) : (
+            ""
+          )}
+          {this.props.match.params.id == "student" ? (
+            <div>
+              <h1>Student</h1>
+              <form onSubmit={this.handleSubmit3}>
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Name"
+                  id="name"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Password"
+                  id="password"
+                  type="password"
+                  autoComplete="nope"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Roll Number"
+                  id="registrationNumber"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Registratio Number"
+                  id="rollNumber"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Branch"
+                  id="branch"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Year"
+                  id="year"
+                  type="number"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Section"
+                  id="section"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Group"
+                  id="group"
+                />
+                <br />
 
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Contact Number"
-                id="contactNumber"
-                type="number"
-              />
-              <br />
-              <br />
-              <Button
-                style={{ margin: "auto", width: "210px" }}
-                color="primary"
-                variant="outlined"
-                type="submit">
-                Add Student
-              </Button>
-            </form>
-          </div>
-        ) : (
-          ""
-        )}
-        {this.props.match.params.id == "warden" ? (
-          <div>
-            <h1>Warden</h1>
-            <form onSubmit={this.handleSubmit4}>
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Name"
-                name="parent"
-                id="name"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Email"
-                name="parent"
-                id="email"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Phone No"
-                name="parent"
-                id="phoneNo"
-                type="number"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Password"
-                name="parent"
-                id="password"
-                type="password"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Employee Id"
-                name="parent"
-                id="employeeId"
-                type="number"
-              />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Contact Number"
+                  id="contactNumber"
+                  type="number"
+                />
+                <br />
+                <br />
+                <Button
+                  style={{ margin: "auto", width: "210px" }}
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                >
+                  Add Student
+                </Button>
+              </form>
+            </div>
+          ) : (
+            ""
+          )}
+          {this.props.match.params.id == "warden" ? (
+            <div>
+              <h1>Warden</h1>
+              <form onSubmit={this.handleSubmit4}>
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Name"
+                  name="parent"
+                  id="name"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Email"
+                  name="parent"
+                  id="email"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Phone No"
+                  name="parent"
+                  id="phoneNo"
+                  type="number"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Password"
+                  name="parent"
+                  id="password"
+                  type="password"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Employee Id"
+                  name="parent"
+                  id="employeeId"
+                  type="number"
+                />
 
-              <br />
-              <br />
-              <Button
-                style={{ margin: "auto", width: "210px" }}
-                color="primary"
-                variant="outlined"
-                type="submit">
-                Add Warden
-              </Button>
-            </form>
-          </div>
-        ) : (
-          ""
-        )}
-        {this.props.match.params.id == "securityGuard" ? (
-          <div>
-            <h1>SecurityGuard</h1>
-            <form onSubmit={this.handleSubmit5}>
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Name"
-                name="parent"
-                id="name"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Email"
-                name="parent"
-                id="email"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Phone No"
-                name="parent"
-                id="phoneNo"
-                type="number"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Password"
-                name="parent"
-                id="password"
-                type="password"
-              />
-              <br />
-              <TextField
-                style={style.textfield}
-                fullWidth
-                color="primary"
-                onChange={this.handleChange}
-                variant="outlined"
-                label="Employee Id"
-                name="parent"
-                id="employeeId"
-                type="number"
-              />
+                <br />
+                <br />
+                <Button
+                  style={{ margin: "auto", width: "210px" }}
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                >
+                  Add Warden
+                </Button>
+              </form>
+            </div>
+          ) : (
+            ""
+          )}
+          {this.props.match.params.id == "securityGuard" ? (
+            <div>
+              <h1>SecurityGuard</h1>
+              <form onSubmit={this.handleSubmit5}>
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Name"
+                  name="parent"
+                  id="name"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Email"
+                  name="parent"
+                  id="email"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Phone No"
+                  name="parent"
+                  id="phoneNo"
+                  type="number"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Password"
+                  name="parent"
+                  id="password"
+                  type="password"
+                />
+                <br />
+                <TextField
+                  style={style.textfield}
+                  fullWidth
+                  color="primary"
+                  onChange={this.handleChange}
+                  variant="outlined"
+                  label="Employee Id"
+                  name="parent"
+                  id="employeeId"
+                  type="number"
+                />
 
-              <br />
-              <br />
-              <Button
-                style={{ margin: "auto", width: "210px" }}
-                color="primary"
-                variant="outlined"
-                type="submit">
-                Add SecurityGuard
-              </Button>
-            </form>
-          </div>
-        ) : (
-          ""
-        )}
+                <br />
+                <br />
+                <br />
+
+                <Button
+                  style={{ margin: "auto", width: "210px" }}
+                  color="primary"
+                  variant="outlined"
+                  type="submit"
+                >
+                  Add SecurityGuard
+                </Button>
+              </form>
+            </div>
+          ) : (
+            ""
+          )}
         </Fade>
       </div>
     );

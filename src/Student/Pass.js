@@ -34,12 +34,12 @@ class App extends React.Component {
           style={{ width: "80%", margin: "auto" }}
           onSubmit={this.handleSubmit1}>
           <TextField
-            id="indate"
-            label="InDate"
+            id="outdate"
+            label="OutDate"
             type="date"
             fullWidth
             onChange={this.handleChange}
-            defaultValue="2019-03-26"
+            defaultValue="2019-04-25"
             InputLabelProps={{
               shrink: true
             }}
@@ -47,12 +47,12 @@ class App extends React.Component {
           <br />
           <br />
           <TextField
-            id="outdate"
-            label="Outdate"
+            id="indate"
+            label="Indate"
             type="date"
             fullWidth
             onChange={this.handleChange}
-            defaultValue="2019-03-27"
+            defaultValue="2019-04-28"
             InputLabelProps={{
               shrink: true
             }}

@@ -7,6 +7,7 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 import Card from "./Card";
+import Card2 from "./Card2";
 
 function TabContainer({ children, dir }) {
   return (
@@ -53,8 +54,8 @@ class FullWidthTabs extends React.Component {
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth">
-            <Tab label="Pass" />
-            <Tab label="Food" />
+            <Tab label="Not Approaved" />
+            <Tab label="Approaved" />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -64,7 +65,9 @@ class FullWidthTabs extends React.Component {
           <TabContainer dir={theme.direction}>
             <Card />
           </TabContainer>
-          <TabContainer dir={theme.direction}>Card</TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Card2 />
+          </TabContainer>
         </SwipeableViews>
       </div>
     );

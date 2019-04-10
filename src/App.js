@@ -13,7 +13,6 @@ import Avatar from "@material-ui/core/Avatar";
 import SnackBar from "./SnackBar";
 
 import Fade from "react-reveal/Fade";
-import Flip from "react-reveal/Flip";
 import Typist from "react-typist";
 
 import { Link } from "react-router-dom";
@@ -44,7 +43,7 @@ function SimpleList(props) {
     <div>
       <Avatar
         style={{ margin: "10% auto" }}
-        alt="Remy Sharp"
+        alt="CVRCE"
         src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
       />
       <Fade top cascade>

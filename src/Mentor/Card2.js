@@ -42,7 +42,7 @@ class SimpleCard extends React.Component {
     axios
       .get(`https://hostelapp2.herokuapp.com/mentor/pass`)
       .then(res =>
-        this.setState({ pass: res.data.filter(data => data.mentorApporval) })
+        this.setState({ pass: res.data.filter(data => !data.mentorApporval) })
       )
       .catch(err => console.log(err));
   }
