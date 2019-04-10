@@ -42,22 +42,21 @@ class SimpleCard extends React.Component {
     axios
       .get(`https://hostelapp2.herokuapp.com/mentor/pass`)
       .then(res =>
-        this.setState({ pass: res.data.filter(data => data.mentorApporval) })
+        this.setState({ pass: res.data.filter(data => !data.mentorApporval) })
       )
       .catch(err => console.log(err));
   }
   approve(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${passConst._id}`)
-      .then(res => this.setState({ pass: res.data }))
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${event._id}`)
+      .then(res => this.setState({ result: res.data }))
       .catch(err => console.log(err));
+    console.log(event);
   }
   decline(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${passConst._id}`)
-      .then(res =>
-        alert(`You ${res.mentorApporval ? "Approve" : "Not Approve"} It`)
-      )
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${event._id}`)
+      .then(res => this.setState({ result: res.data }))
       .catch(err => console.log(err));
   }
   render() {
@@ -108,7 +107,9 @@ class SimpleCard extends React.Component {
                 </CardContent>
                 <CardActions>
                   <Link to="/mentor" style={{ textDecoration: "none" }}>
-                    <Button onClick={this.approve} size="small">
+                    <Button
+                      onClick={() => this.approve(passConst)}
+                      size="small">
                       Approve
                     </Button>
                   </Link>
