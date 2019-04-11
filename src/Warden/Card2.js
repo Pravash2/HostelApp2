@@ -7,9 +7,9 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
-import Loader from "../Loader";
-import { Link } from "react-router-dom";
 
+import { Link } from "react-router-dom";
+import Loader from "../Loader";
 import axios from "axios";
 
 const styles = {
@@ -42,7 +42,7 @@ class SimpleCard extends React.Component {
     axios
       .get(`https://hostelapp2.herokuapp.com/warden/pass`)
       .then(res =>
-        this.setState({ pass: res.data.filter(data => !data.wardenApproval) })
+        this.setState({ pass: res.data.filter(data => data.wardenApproval) })
       )
       .catch(err => console.log(err));
   }
@@ -64,7 +64,6 @@ class SimpleCard extends React.Component {
     const bull = <span className={classes.bullet}>•</span>;
 
     if (this.state.pass) {
-      console.log(this.state.pass);
       return (
         <div>
           {this.state.pass.map(passConst => (
@@ -72,10 +71,10 @@ class SimpleCard extends React.Component {
               <Card className={classes.card}>
                 <CardContent>
                   <Typography color="textSecondary" variant="h6" gutterBottom>
-                    {passConst.warde ? "Approve" : "Not Approve"}
+                    {passConst.wardenApproval ? "Approve" : "Not Approve"}
                   </Typography>
                   <Typography className={classes.pos} color="textSecondary">
-                    Date{""}
+                    Date{" "}
                     {`${passConst.inDate.substring(
                       0,
                       10
@@ -103,7 +102,7 @@ class SimpleCard extends React.Component {
                   }`}</Typography>
                   <br />
                   <Typography variant="h6" component="p">{`You ${
-                    passConst.warde ? "Approve" : "Not Approve"
+                    passConst.wardenApproval ? "Approve" : "Not Approve"
                   } It`}</Typography>
                 </CardContent>
                 <CardActions>

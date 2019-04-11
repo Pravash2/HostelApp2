@@ -1,14 +1,18 @@
-import React from 'react'
-import Typist from 'react-typist'
-import "./Loader"
-
-
-class App extends React.Component{
-  render(){
-    return(
-      <div id="container">><h1 className="box">Hello</h1></div>
-    )
+import React from "react";
+import Loader from "react-loader-spinner";
+export default class App extends React.Component {
+  //other logic
+  render() {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh"
+        }}>
+        <Loader type="Triangle" color="#00BFFF" height="100" width="100" />
+      </div>
+    );
   }
 }
-
-export default App;

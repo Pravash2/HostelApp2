@@ -6,9 +6,10 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 
 import { Link } from "react-router-dom";
-
+import Loader from '../Loader'
 import axios from "axios";
 
 const styles = {
@@ -34,63 +35,90 @@ class SimpleCard extends React.Component {
   };
   constructor(props) {
     super(props);
+    this.approve = this.approve.bind(this);
   }
   componentDidMount() {
     axios
       .get(`https://hostelapp2.herokuapp.com/securityguard/pass`)
       .then(res =>
-        alert(`You ${res.wardenApproval ? "Approve" : "Not Approve"} It`)
+        this.setState({ pass: res.data.filter(data => !data.gateOut) })
       )
       .catch(err => console.log(err));
+  }
+  approve(event) {
+    axios
+      .get(
+        `https://hostelapp2.herokuapp.com/securityguard/pass/out/${event._id}`
+      )
+      .then(res => this.setState({ result: res.data }))
+      .catch(err => console.log(err));
+    console.log(event);
   }
 
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
 
-    if (this.state.pass.length > 0) {
+    if (this.state.pass) {
       console.log(this.state.pass);
       return (
         <div>
-          {this.state.pass.map(pass => (
-            <Card className={classes.card}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
-                  {pass.studentDetail.name}
-                </Typography>
-
-                <Typography className={classes.pos} color="textSecondary">
-                  {`Roll Number : ${pass.studentDetail.rollNumber}`}
-                  <Typography className={classes.pos} color="textSecondary">
-                    {`${pass.studentDetail.branch} ${
-                      pass.studentDetail.group
-                    } ${pass.studentDetail.section} ${pass.studentDetail.year}`}
+          {this.state.pass.map(passConst => (
+            <div>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Typography color="textSecondary" variant="h6" gutterBottom>
+                    {passConst.wardenApproval ? "Approve" : "Not Approve"}
                   </Typography>
-                </Typography>
-                <Typography className={classes.pos} color="textSecondary">
-                  {`${pass.studentDetail.contactNumber}`}
-                </Typography>
-                <Typography component="p">{`PURPOSE : ${
-                  pass.purpose
-                }`}</Typography>
-                <br />
-                <Typography variant="h5" component="h4">{`${
-                  pass.wardenApproval ? "Approved" : "Not Approved"
-                }`}</Typography>
-                <Typography variant="h6" component="h1">
-                  Date{" "}
-                  {`${pass.inDate.substring(0, 10)} / ${pass.outDate.substring(
-                    0,
-                    10
-                  )}`}
-                </Typography>
-              </CardContent>
-            </Card>
+                  <Typography className={classes.pos} color="textSecondary">
+                    Date{""}
+                    {`${passConst.inDate.substring(
+                      0,
+                      10
+                    )} / ${passConst.outDate.substring(0, 10)}`}
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                    {passConst.studentDetail.name}
+                  </Typography>
+
+                  <Typography className={classes.pos} color="textSecondary">
+                    {`Rolls Number : ${passConst.studentDetail.rollNumber}`}
+                    <Typography className={classes.pos} color="textSecondary">
+                      {`${passConst.studentDetail.branch} ${
+                        passConst.studentDetail.group
+                      } ${passConst.studentDetail.section} ${
+                        passConst.studentDetail.year
+                      }`}
+                    </Typography>
+                  </Typography>
+                  <Typography className={classes.pos} color="textSecondary">
+                    {`${passConst.studentDetail.contactNumber}`}
+                  </Typography>
+                  <Typography component="p">{`PURPOSE : ${
+                    passConst.purpose
+                  }`}</Typography>
+                  <br />
+                  <Typography variant="h6" component="p">{`It has been ${
+                    passConst.wardenApproval ? "Approved" : "Not Approved"
+                  }`}</Typography>
+                </CardContent>
+                <CardActions>
+                  <Link to="/securityguard" style={{ textDecoration: "none" }}>
+                    <Button
+                      onClick={() => this.approve(passConst)}
+                      size="small">
+                      Checked Out
+                    </Button>
+                  </Link>
+                </CardActions>
+              </Card>
+              <br />
+            </div>
           ))}
         </div>
       );
     }
-    return <h1>Not Approaval Pass Found</h1>;
+    return <div><Loader /></div>;
   }
 }
 SimpleCard.propTypes = {

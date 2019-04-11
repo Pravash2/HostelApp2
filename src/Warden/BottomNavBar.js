@@ -8,6 +8,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
 import Card from "./Card";
+import Card2 from "./Card2";
 import Add from "./Add";
 
 function TabContainer({ children, dir }) {
@@ -55,21 +56,24 @@ class FullWidthTabs extends React.Component {
             indicatorColor="primary"
             textColor="primary"
             variant="fullWidth">
-            <Tab label="Pass" />
+            <Tab label="Attendace" />
             <Tab label="Food" />
-            <Tab label="ADD" />
+            <Tab label="Pending Pass" />
+            <Tab label="Approved Pass" />
           </Tabs>
         </AppBar>
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}>
-          <TabContainer dir={theme.direction}>
-            <Card />
-          </TabContainer>
+          <TabContainer dir={theme.direction}>Card</TabContainer>
           <TabContainer dir={theme.direction}>Card</TabContainer>
           <TabContainer dir={theme.direction}>
-            <Add />
+            {" "}
+            <Card />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Card2 />
           </TabContainer>
         </SwipeableViews>
       </div>

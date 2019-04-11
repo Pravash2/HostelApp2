@@ -4,6 +4,7 @@ import Bottom from "./BottomNavbar";
 import setAuthToken from "../utils/setAuthToken";
 
 import axios from "axios";
+import Loader from "../Loader";
 
 class App extends React.Component {
   state = {
@@ -24,7 +25,11 @@ class App extends React.Component {
           <Bottom student={this.state.student} />
         </div>
       );
-    return <div>Loading</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 }
 

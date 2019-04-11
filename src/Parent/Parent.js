@@ -2,7 +2,7 @@ import React from "react";
 import AppBar from "./AppBar";
 import Bottom from "./BottomNavBar";
 import setAuthToken from "../utils/setAuthToken";
-
+import Loader from "../Loader";
 import axios from "axios";
 
 class App extends React.Component {
@@ -24,7 +24,11 @@ class App extends React.Component {
           <Bottom student={this.state.student} />
         </div>
       );
-    return <div>Loading</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 }
 

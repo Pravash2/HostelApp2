@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
 import { Link } from "react-router-dom";
-
+import Loader from "../Loader";
 import axios from "axios";
 
 const styles = {
@@ -48,16 +48,15 @@ class SimpleCard extends React.Component {
   }
   approve(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${passConst._id}`)
-      .then(res => this.setState({ pass: res.data }))
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/yes/${event._id}`)
+      .then(res => this.setState({ result: res.data }))
       .catch(err => console.log(err));
+    console.log(event);
   }
   decline(event) {
     axios
-      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${passConst._id}`)
-      .then(res =>
-        alert(`You ${res.mentorApporval ? "Approve" : "Not Approve"} It`)
-      )
+      .get(`https://hostelapp2.herokuapp.com/mentor/pass/no/${event._id}`)
+      .then(res => this.setState({ result: res.data }))
       .catch(err => console.log(err));
   }
   render() {
@@ -75,7 +74,7 @@ class SimpleCard extends React.Component {
                     {passConst.mentorApporval ? "Approve" : "Not Approve"}
                   </Typography>
                   <Typography className={classes.pos} color="textSecondary">
-                    Date{" "}
+                    Date{""}
                     {`${passConst.inDate.substring(
                       0,
                       10
@@ -108,11 +107,13 @@ class SimpleCard extends React.Component {
                 </CardContent>
                 <CardActions>
                   <Link to="/mentor" style={{ textDecoration: "none" }}>
-                    <Button onClick={this.approve} size="small">
+                    <Button
+                      onClick={() => this.approve(passConst)}
+                      size="small">
                       Approve
                     </Button>
                   </Link>
-                  <Button onClick={this.decline} size="small">
+                  <Button onClick={() => this.decline(passConst)} size="small">
                     Decline
                   </Button>
                 </CardActions>
@@ -123,7 +124,11 @@ class SimpleCard extends React.Component {
         </div>
       );
     }
-    return <div>Loading</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 }
 SimpleCard.propTypes = {

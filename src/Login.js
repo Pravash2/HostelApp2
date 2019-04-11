@@ -133,7 +133,7 @@ class SignIn extends React.Component {
               loading: false,
               success: true
             });
-          }, 10000);
+          }, 7000);
         }
       );
     }

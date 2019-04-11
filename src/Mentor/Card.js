@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
 import { Link } from "react-router-dom";
-
+import Loader from "../Loader";
 import axios from "axios";
 
 const styles = {
@@ -124,7 +124,11 @@ class SimpleCard extends React.Component {
         </div>
       );
     }
-    return <div>Loading</div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 }
 SimpleCard.propTypes = {

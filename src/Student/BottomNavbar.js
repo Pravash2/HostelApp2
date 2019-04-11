@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Pass from "./Pass";
 import Card from "./Card";
 import QrCode from "../QrCode/QrCode";
+import Loader from '../Loader'
 
 function TabContainer({ children, dir }) {
   return (
