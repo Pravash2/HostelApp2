@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 
 import { Link } from "react-router-dom";
-import Loader from '../Loader'
+import Loader from "../Loader";
 import axios from "axios";
 
 const styles = {
@@ -60,7 +60,6 @@ class SimpleCard extends React.Component {
     const bull = <span className={classes.bullet}>•</span>;
 
     if (this.state.pass) {
-      console.log(this.state.pass);
       return (
         <div>
           {this.state.pass.map(passConst => (
@@ -118,7 +117,11 @@ class SimpleCard extends React.Component {
         </div>
       );
     }
-    return <div><Loader /></div>;
+    return (
+      <div>
+        <Loader />
+      </div>
+    );
   }
 }
 SimpleCard.propTypes = {

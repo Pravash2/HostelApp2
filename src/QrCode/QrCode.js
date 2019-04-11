@@ -3,7 +3,7 @@ import QrReader from "react-qr-reader";
 import { Button } from "@material-ui/core";
 import axios from "axios";
 class Test extends Component {
-  state = { result: "No result", result2: "" };
+  state = { result: "No result", result2: "fdffd" };
   handleScan = data => {
     if (data) {
       this.setState({ result: data });
@@ -25,7 +25,7 @@ class Test extends Component {
       .catch(err => console.log(err));
   }
   render() {
-    if (!this.state.result2) {
+    if (!this.state.result2.length > 2) {
       if (!this.state.result) {
         return (
           <div>
@@ -46,14 +46,12 @@ class Test extends Component {
               justifyContent: "center",
               alignItems: "center",
               height: "100vh"
-            }}
-          >
+            }}>
             {" "}
             <Button
               onClick={() => this.onClickButton()}
               color="secondary"
-              variant="contained"
-            >
+              variant="contained">
               {" "}
               {this.state.result}{" "}
             </Button>{" "}

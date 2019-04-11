@@ -60,7 +60,7 @@ class SimpleCard extends React.Component {
     const bull = <span className={classes.bullet}>•</span>;
 
     if (this.state.pass) {
-      console.log(this.state.pass);
+
       return (
         <div>
           {this.state.pass.map(passConst => (

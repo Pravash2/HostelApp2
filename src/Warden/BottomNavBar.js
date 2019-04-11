@@ -10,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from "./Card";
 import Card2 from "./Card2";
 import Add from "./Add";
+import List from "./List";
 
 import Pie from "./Pie";
 import Pie2 from "./Pie2";
@@ -58,8 +59,7 @@ class FullWidthTabs extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth"
-          >
+            variant="fullWidth">
             <Tab label="Attendace" />
             <Tab label="Food" />
             <Tab label="Pending Pass" />
@@ -69,10 +69,11 @@ class FullWidthTabs extends React.Component {
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-        >
+          onChangeIndex={this.handleChangeIndex}>
           <TabContainer dir={theme.direction}>
-            <Pie />
+            <div>
+              <Pie />
+            </div>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <Pie2 />

@@ -1,35 +1,39 @@
 import React, { Component } from "react";
-import PieChart from "react-simple-pie-chart";
 import PieCharts from "react-minimal-pie-chart";
+import List from "./List";
 
 class Summary extends Component {
   render() {
     return (
-      <PieCharts
-        data={[
-          {
-            title: "One",
-            value: 10,
-            color: "#E38627"
-          },
-          {
-            title: "Two",
-            value: 15,
-            color: "#C13C37"
-          },
-          {
-            title: "Three",
-            value: 20,
-            color: "#6A2135"
-          }
-        ]}
-        label
-        labelStyle={{
-          fontSize: "5px",
-          fontFamily: "sans-serif",
-          fill: "#121212"
-        }}
-      />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+
+          flexDirection: "column"
+        }}>
+        <h1>Student In The Hostel</h1>
+        <PieCharts
+          data={[
+            {
+              value: 82,
+              color: "#E38627"
+            }
+          ]}
+          totalValue={100}
+          lineWidth={30}
+          label
+          labelStyle={{
+            fontSize: "25px",
+            fontFamily: "sans-serif"
+          }}
+          labelPosition={0}
+        />
+   
+          <List />
+
+      </div>
     );
   }
 }

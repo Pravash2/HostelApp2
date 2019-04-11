@@ -8,7 +8,7 @@ import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
 
 import PieChart from "./PieChart";
-import PieChart2 from "./PieChart2";
+
 import Card from "./Card";
 
 function TabContainer({ children, dir }) {
@@ -55,27 +55,20 @@ class FullWidthTabs extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth"
-          >
-            <Tab label="PASS" />
+            variant="fullWidth">
             <Tab label="Outing" />
-            <Tab label="Food" />
+            <Tab label="PASS" />
           </Tabs>
         </AppBar>
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}
-        >
-          <TabContainer dir={theme.direction}>
-            <Card />
-          </TabContainer>
+          onChangeIndex={this.handleChangeIndex}>
           <TabContainer dir={theme.direction}>
             <PieChart />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            {" "}
-            <PieChart2 />
+            <Card />
           </TabContainer>
         </SwipeableViews>
       </div>

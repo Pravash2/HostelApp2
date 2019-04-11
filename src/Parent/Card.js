@@ -174,7 +174,7 @@ class SimpleCard extends React.Component {
     }
     return (
       <div>
-        <h1>No Pass Found</h1>
+        <h1 style={{textAlign:'center'}}>No Pass Found</h1>
       </div>
     );
   }
