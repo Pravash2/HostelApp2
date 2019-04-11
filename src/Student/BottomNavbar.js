@@ -10,7 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import Pass from "./Pass";
 import Card from "./Card";
 import QrCode from "../QrCode/QrCode";
-import Loader from '../Loader'
+import QrCode2 from "../QrCode/QrCode2";
+import Loader from "../Loader";
 
 function TabContainer({ children, dir }) {
   return (
@@ -56,7 +57,8 @@ class FullWidthTabs extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth">
+            variant="fullWidth"
+          >
             <Tab label="Pass" />
             <Tab label="food" />
             <Tab label="Atendance" />
@@ -65,7 +67,8 @@ class FullWidthTabs extends React.Component {
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}>
+          onChangeIndex={this.handleChangeIndex}
+        >
           <TabContainer dir={theme.direction}>
             <Pass />
           </TabContainer>
@@ -73,7 +76,7 @@ class FullWidthTabs extends React.Component {
             <QrCode />
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <QrCode />
+            <QrCode2 />
           </TabContainer>
         </SwipeableViews>
       </div>

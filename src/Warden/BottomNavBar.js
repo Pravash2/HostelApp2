@@ -11,6 +11,9 @@ import Card from "./Card";
 import Card2 from "./Card2";
 import Add from "./Add";
 
+import Pie from "./Pie";
+import Pie2 from "./Pie2";
+
 function TabContainer({ children, dir }) {
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
@@ -55,7 +58,8 @@ class FullWidthTabs extends React.Component {
             onChange={this.handleChange}
             indicatorColor="primary"
             textColor="primary"
-            variant="fullWidth">
+            variant="fullWidth"
+          >
             <Tab label="Attendace" />
             <Tab label="Food" />
             <Tab label="Pending Pass" />
@@ -65,9 +69,14 @@ class FullWidthTabs extends React.Component {
         <SwipeableViews
           axis={theme.direction === "rtl" ? "x-reverse" : "x"}
           index={this.state.value}
-          onChangeIndex={this.handleChangeIndex}>
-          <TabContainer dir={theme.direction}>Card</TabContainer>
-          <TabContainer dir={theme.direction}>Card</TabContainer>
+          onChangeIndex={this.handleChangeIndex}
+        >
+          <TabContainer dir={theme.direction}>
+            <Pie />
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <Pie2 />
+          </TabContainer>
           <TabContainer dir={theme.direction}>
             {" "}
             <Card />
