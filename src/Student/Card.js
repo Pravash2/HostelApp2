@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import axios from "axios";
-import Loader from '../Loader'
+import Loader from "../Loader";
 
 const styles = {
   card: {
@@ -41,60 +41,69 @@ class SimpleCard extends React.Component {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
     if (this.state.pass !== "") {
-      if(this.state.pass)
-      return (
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography color="textSecondary" variant="h6" gutterBottom>
-              {this.state.parentApproval ? "Approve" : "Not Approve"}
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              Date{" "}
-              {`${this.state.pass.inDate.substring(
-                0,
-                10
-              )} / ${this.state.pass.outDate.substring(0, 10)}`}
-            </Typography>
-            <Typography variant="h5" component="h2">
-              {this.state.pass.studentDetail.name}
-            </Typography>
-
-            <Typography className={classes.pos} color="textSecondary">
-              {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
-              <Typography className={classes.pos} color="textSecondary">
-                {`${this.state.pass.studentDetail.branch} ${
-                  this.state.pass.studentDetail.group
-                } ${this.state.pass.studentDetail.section} ${
-                  this.state.pass.studentDetail.year
-                }`}
+      if (this.state.pass)
+        return (
+          <Card className={classes.card}>
+            <CardContent>
+              <Typography variant="h5" component="h2">
+                {this.state.pass.studentDetail.name}
               </Typography>
-            </Typography>
-            <Typography className={classes.pos} color="textSecondary">
-              {`${this.state.pass.studentDetail.contactNumber}`}
-            </Typography>
-            <Typography component="p">{`PURPOSE : ${
-              this.state.pass.purpose
-            }`}</Typography>
-            <br />
-            <Typography component="p">
-              {`Parent ${
-                this.state.pass.parentApproval ? "Approve" : "Not Approve"
-              } It`}
-              <Typography component="p">{`Mentor ${
-                this.state.pass.mentorApporval ? "Approve" : "Not Approve"
-              } It`}</Typography>
-              <Typography component="p">{`Warden ${
-                this.state.pass.wardenApproval ? "Approve" : "Not Approve"
-              } It`}</Typography>
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <Button size="small">Extend</Button>
-          </CardActions>
-        </Card>
-      );
+
+              <Typography className={classes.pos} color="textSecondary">
+                {`Roll Number : ${this.state.pass.studentDetail.rollNumber}`}
+                <Typography className={classes.pos} color="textSecondary">
+                  {`${this.state.pass.studentDetail.branch} ${
+                    this.state.pass.studentDetail.group
+                  } ${this.state.pass.studentDetail.section} ${
+                    this.state.pass.studentDetail.year
+                  }`}
+                </Typography>
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary">
+                {`${this.state.pass.studentDetail.contactNumber}`}
+              </Typography>
+              <Typography component="p">{`PURPOSE : ${
+                this.state.pass.purpose
+              }`}</Typography>
+              <br />
+              <Typography className={classes.pos} color="textSecondary">
+                {`Parent ${
+                  this.state.pass.parentApproval ? "Approve" : "Not Approve"
+                } It`}
+                <Typography className={classes.pos} color="textSecondary">
+                  {`Mentor ${
+                    this.state.pass.mentorApporval ? "Approve" : "Not Approve"
+                  } It`}
+                  <Typography
+                    className={classes.pos}
+                    color="textSecondary">{`Warden ${
+                    this.state.pass.wardenApproval ? "Approve" : "Not Approve"
+                  } It`}</Typography>
+                </Typography>
+              </Typography>
+              <Typography color="textSecondary" variant="h6" gutterBottom>
+                Your Pass Has been{" "}
+                {this.state.pass.wardenApproval ? "Approved" : "Not Approved"}
+              </Typography>
+              <Typography className={classes.pos} color="textSecondary">
+                Date{" "}
+                {`${this.state.pass.inDate.substring(
+                  0,
+                  10
+                )} / ${this.state.pass.outDate.substring(0, 10)}`}
+              </Typography>
+            </CardContent>
+            <CardActions>
+              <Button size="small">Extend</Button>
+            </CardActions>
+          </Card>
+        );
     }
-    return <div><h1>No Pass Found</h1></div>;
+    return (
+      <div>
+        <h1 style={{ textAlign: "center" }}>Your Card is Loading</h1>
+      </div>
+    );
   }
 }
 SimpleCard.propTypes = {
