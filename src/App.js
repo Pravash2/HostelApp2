@@ -11,14 +11,14 @@ import DraftsIcon from "@material-ui/icons/Drafts";
 import Avatar from "@material-ui/core/Avatar";
 
 import SnackBar from "./SnackBar";
-
+import Spin from "react-reveal/Spin";
 import Fade from "react-reveal/Fade";
 import Typist from "react-typist";
 
 import { Link } from "react-router-dom";
 
 import "./App.css";
-
+import Logo from "./logo.png";
 const styles = theme => ({
   root: {
     flexDirection: "row",
@@ -41,16 +41,22 @@ function SimpleList(props) {
   const { classes } = props;
   return (
     <div>
-      <Avatar
-        style={{ margin: "10% auto" }}
-        alt="CVRCE"
-        src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
-      />
+      <Spin>
+        <Avatar style={{ margin: "10% auto" }} alt="CVRCE" src={Logo} />
+      </Spin>
       <Fade top cascade>
-        <h1 style={{ textAlign: "center" }}>Welcome to CVRCE</h1>
+        <h1 style={{ textAlign: "center", textIndent: "2px" }}>
+          Welcome to CVRCE
+        </h1>
       </Fade>
       <Typist stdTypingDelay={20} startDelay={2500}>
-        <h3 style={{ textAlign: "center", color: "gray" }}>
+        <h3
+          style={{
+            color: "gray",
+            textIndent: "10px",
+            textAlign: "center",
+            letterSpacing: "3px"
+          }}>
           Select Your Position
         </h3>
       </Typist>

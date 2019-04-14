@@ -5,7 +5,10 @@ import axios from "axios";
 import Card from "./Card1";
 
 class Test extends Component {
-  state = { result: "", result2: "" };
+  state = {
+    result: "https://hostelapp2.herokuapp.com/student/food",
+    result2: ""
+  };
 
   handleScan = data => {
     if (data) {
@@ -28,13 +31,16 @@ class Test extends Component {
       .catch(err => console.log(err));
   }
   render() {
+    console.log(Date(this.state.result2.Token).toString());
+
     if (
+      this.state.result2.Token &&
       Date(this.state.result2.Token)
         .toString()
         .substring(0, 15) ===
-      Date(Date.now())
-        .toString()
-        .substring(0, 15)
+        Date(Date.now())
+          .toString()
+          .substring(0, 15)
     ) {
       if (
         parseInt(
@@ -48,7 +54,7 @@ class Test extends Component {
             .substring(15, 18)
         ) < 10
       ) {
-        return <Card data={this.state.result2} />;
+        return <Card data={this.state.result2} type={1} />;
       }
       if (
         parseInt(
@@ -62,7 +68,7 @@ class Test extends Component {
             .substring(15, 18)
         ) < 14
       ) {
-        return <Card data={this.state.result2} />;
+        return <Card data={this.state.result2} type={2} />;
       }
       if (
         parseInt(
@@ -76,7 +82,7 @@ class Test extends Component {
             .substring(15, 18)
         ) < 23
       ) {
-        return <Card data={this.state.result2} />;
+        return <Card data={this.state.result2} type={3} />;
       }
     } else {
       if (!this.state.result) {
@@ -99,14 +105,12 @@ class Test extends Component {
               justifyContent: "center",
               alignItems: "center",
               height: "100vh"
-            }}
-          >
+            }}>
             {" "}
             <Button
               onClick={() => this.onClickButton()}
               color="secondary"
-              variant="contained"
-            >
+              variant="contained">
               {" "}
               Click To Generate
             </Button>{" "}

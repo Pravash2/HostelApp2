@@ -24,6 +24,8 @@ import green from "@material-ui/core/colors/green";
 import { Link } from "react-router-dom";
 import Notifier, { openSnackbar } from "./SnackBar";
 import Fade from "react-reveal/Fade";
+import Spin from "react-reveal/Spin";
+import Logo from "./logo.png";
 
 const styles = theme => ({
   main: {
@@ -173,14 +175,13 @@ class SignIn extends React.Component {
     const { classes } = this.props;
     return (
       <main className={classes.main}>
-        <Fade>
+        <Fade bottom>
           <Notifier />
           <CssBaseline />
           <Paper className={classes.paper}>
-            <Avatar
-              alt="Remy Sharp"
-              src="https://media.glassdoor.com/sqll/609007/c-v-raman-college-of-engineering-squarelogo-1534916004379.png"
-            />
+            <Spin>
+              <Avatar style={{ margin: "10% auto" }} alt="CVRCE" src={Logo} />
+            </Spin>
             <Typography component="h1" variant="h5">
               {`${this.props.match.params.id.toUpperCase()} SIGN IN`}
             </Typography>
