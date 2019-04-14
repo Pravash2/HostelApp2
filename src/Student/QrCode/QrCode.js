@@ -6,8 +6,8 @@ import Card from "./Card1";
 
 class Test extends Component {
   state = {
-    result: "https://hostelapp2.herokuapp.com/student/food",
-    result2: ""
+    result2: "",
+    result: ""
   };
 
   handleScan = data => {
@@ -26,60 +26,49 @@ class Test extends Component {
   }
   componentDidMount() {
     axios
-      .get(`https://hostelapp2.herokuapp.com/student/food`)
+      .get(`http://localhost:3000/student/food`)
       .then(res => this.setState({ result2: res.data }))
       .catch(err => console.log(err));
   }
   render() {
-    console.log(Date(this.state.result2.Token).toString());
+    console.log(
+      this.state.result2.Token &&
+        new Date(this.state.result2.Token).toString().substring(0, 25)
+    );
 
     if (
       this.state.result2.Token &&
-      Date(this.state.result2.Token)
-        .toString()
-        .substring(0, 15) ===
+      new Date(this.state.result2.Token).toString().substring(0, 15) ===
         Date(Date.now())
           .toString()
           .substring(0, 15)
     ) {
       if (
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) > 6 &&
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) < 10
       ) {
         return <Card data={this.state.result2} type={1} />;
       }
       if (
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) > 11 &&
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) < 14
       ) {
         return <Card data={this.state.result2} type={2} />;
       }
       if (
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) > 18 &&
         parseInt(
-          Date(this.state.result2.Token)
-            .toString()
-            .substring(15, 18)
+          new Date(this.state.result2.Token).toString().substring(15, 18)
         ) < 23
       ) {
         return <Card data={this.state.result2} type={3} />;
