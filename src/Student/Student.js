@@ -5,7 +5,6 @@ import setAuthToken from "../utils/setAuthToken";
 
 import axios from "axios";
 import Loader from "../Loader";
-
 class App extends React.Component {
   state = {
     student: null
@@ -22,6 +21,7 @@ class App extends React.Component {
       return (
         <div>
           <AppBar student={this.state.student} />
+
           <Bottom student={this.state.student} />
         </div>
       );

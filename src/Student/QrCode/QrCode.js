@@ -22,20 +22,15 @@ class Test extends Component {
     axios
       .post(`${this.state.result}`)
       .then(res => this.setState({ result2: res.data }))
-      .catch(err => console.log(err));
+      .catch(err => alert("May QR Code Not Valid or NetWork ERROR"));
   }
   componentDidMount() {
     axios
-      .get(`http://localhost:3000/student/food`)
+      .get(`https://hostelapp2.herokuapp.com/student/food`)
       .then(res => this.setState({ result2: res.data }))
       .catch(err => console.log(err));
   }
   render() {
-    console.log(
-      this.state.result2.Token &&
-        new Date(this.state.result2.Token).toString().substring(0, 25)
-    );
-
     if (
       this.state.result2.Token &&
       new Date(this.state.result2.Token).toString().substring(0, 15) ===
@@ -93,7 +88,7 @@ class Test extends Component {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              height: "100vh"
+              height: "40vh"
             }}>
             {" "}
             <Button
@@ -101,7 +96,7 @@ class Test extends Component {
               color="secondary"
               variant="contained">
               {" "}
-              Click To Generate
+              Generate Food Pass
             </Button>{" "}
           </div>
         );
