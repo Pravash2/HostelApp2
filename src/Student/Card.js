@@ -37,6 +37,15 @@ class SimpleCard extends React.Component {
       .then(res => this.setState({ pass: res.data }))
       .catch(err => console.log(err));
   }
+  DeletePass(id) {
+    axios
+      .delete(`https://hostelapp2.herokuapp.com/student/pass/${id}`)
+      .then(res => alert(`Your Pass is Deleted`))
+      .then(() => {
+        window.location.reload();
+      })
+      .catch(err => alert(err));
+  }
   render() {
     const { classes } = this.props;
     const bull = <span className={classes.bullet}>•</span>;
@@ -94,7 +103,11 @@ class SimpleCard extends React.Component {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small">Extend</Button>
+              <Button
+                onClick={() => this.DeletePass(this.state.pass._id)}
+                size="small">
+                Delete
+              </Button>
             </CardActions>
           </Card>
         );

@@ -1,3 +1,13 @@
 .list-item {
   padding: "20px";
 }
+
+#welcome {
+  font-family: "Lato", sans-serif;
+  font-weight: 900;
+}
+
+#welcome-small {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 800;
+}

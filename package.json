@@ -11,7 +11,6 @@
     "address": "1.0.3",
     "assign-symbols": "2.0.2",
     "axios": "0.18.0",
-    "get-ip-addresses": "1.1.0",
     "jwt-decode": "2.2.0",
     "react": "16.8.6",
     "react-bootstrap": "1.0.0-beta.6",

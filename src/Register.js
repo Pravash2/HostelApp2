@@ -1,22 +1,26 @@
+//import of packages
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import MenuItem from "@material-ui/core/MenuItem";
 import Paper from "@material-ui/core/Paper";
 import axios from "axios";
-
-import Notifier, { openSnackbar } from "./SnackBar";
 import Fade from "react-reveal/Fade";
 import Spin from "react-reveal/Spin";
 import Avatar from "@material-ui/core/Avatar";
-import Logo from "./logo.png";
 
+//import of pages
+import Logo from "./logo.png";
+import Notifier, { openSnackbar } from "./SnackBar";
+
+//declaring the styles
 const style = {
   textfield: {
     marginTop: "3%"
   }
 };
 
+//creating the class Add
 class Add extends React.Component {
   state = [
     {
@@ -46,6 +50,9 @@ class Add extends React.Component {
       result: ""
     });
   };
+
+//functions for handeling the form submit for different position
+
   handleSubmit1(event) {
     event.preventDefault();
     axios
@@ -394,7 +401,7 @@ class Add extends React.Component {
                     onChange={this.handleChange}
                     variant="outlined"
                     label="Roll Number"
-                    id="registrationNumber"
+                    id="rollNumber"
                   />
                   <br />
                   <TextField
@@ -404,7 +411,8 @@ class Add extends React.Component {
                     onChange={this.handleChange}
                     variant="outlined"
                     label="Registratio Number"
-                    id="rollNumber"
+                  
+                    id="registrationNumber"
                   />
                   <br />
                   <TextField
@@ -634,4 +642,6 @@ class Add extends React.Component {
   }
 }
 
+
+//exporting the Add class
 export default Add;

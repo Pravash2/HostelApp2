@@ -1,8 +1,11 @@
+//importing the packages
 import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 
-let openSnackbarFn;
+let openSnackbarFn; //declaring the variable openSnackbarFn
 
+
+//creating a class Notifier
 class Notifier extends React.Component {
   state = {
     open: false,
@@ -13,6 +16,8 @@ class Notifier extends React.Component {
     openSnackbarFn = this.openSnackbar;
   }
 
+
+  //handels Closing of Snackbar
   handleSnackbarClose = () => {
     this.setState({
       open: false,
@@ -51,4 +56,7 @@ export function openSnackbar({ message }) {
   openSnackbarFn({ message });
 }
 
+
+
+//export of Notifier Class
 export default Notifier;

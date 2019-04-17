@@ -29,7 +29,11 @@ class App extends React.Component {
     event.preventDefault();
     axios
       .post("https://hostelapp2.herokuapp.com/student/pass", this.state)
-      .then(res => this.setState({ result: res.data }))
+      .then(() => {
+        axios
+          .get("https://hostelapp2.herokuapp.com/student/pass")
+          .then(res => this.setState({ pass: res.data }));
+      })
       .catch(err => console.log(err));
   }
   handleChange = event => {

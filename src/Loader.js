@@ -1,8 +1,10 @@
+//importing the packages for Loader
 import React from "react";
 import Loader from "react-loader-spinner";
 import Bounce from "react-reveal/Bounce";
 import Typography from "@material-ui/core/Typography";
 export default class App extends React.Component {
+  
   //other logic
   render() {
     return (

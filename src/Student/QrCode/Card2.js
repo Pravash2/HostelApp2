@@ -33,12 +33,12 @@ function FolderList(props) {
           {data.types == "out" ? (
             <ListItemText
               primary={new Date(data.timing).toString().substring(0, 24)}
-              secondary="For Going Outside"
+              secondary="For Going Outside from Hostel"
             />
           ) : (
             <ListItemText
               primary={new Date(data.timing).toString().substring(0, 24)}
-              secondary="For Going Inside"
+              secondary="For Going Inside to Hostel"
             />
           )}
         </ListItem>

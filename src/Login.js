@@ -1,3 +1,4 @@
+//importing the package modules
 import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "@material-ui/core/Avatar";
@@ -12,21 +13,21 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
-
 import axios from "axios";
-import setAuthToken from "./utils/setAuthToken";
 import jwt_decode from "jwt-decode";
-
 import CircularProgress from "@material-ui/core/CircularProgress";
-import ButtonLoader from "./utils/buttonLoader";
 import green from "@material-ui/core/colors/green";
-
 import { Link } from "react-router-dom";
-import Notifier, { openSnackbar } from "./SnackBar";
 import Fade from "react-reveal/Fade";
 import Spin from "react-reveal/Spin";
-import Logo from "./logo.png";
 
+//importing the necessary pages
+import Logo from "./logo.png";
+import Notifier, { openSnackbar } from "./SnackBar";
+import ButtonLoader from "./utils/buttonLoader";
+import setAuthToken from "./utils/setAuthToken";
+
+//declaring the styles
 const styles = theme => ({
   main: {
     width: "auto",
@@ -90,6 +91,7 @@ const styles = theme => ({
   }
 });
 
+//SignIn class which inherits the React Component class
 class SignIn extends React.Component {
   constructor(props) {
     super(props);
@@ -108,20 +110,20 @@ class SignIn extends React.Component {
     clearTimeout(this.timer);
   }
 
-  handleButtonClick = () => {};
-
   validateForm() {
     return this.state.email.length > 0 && this.state.password.length > 0;
   }
 
+  //function for Handeling the any changes with the inputFiled
   handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value
     });
   };
 
+  //function for the form submit event
   handleSubmit = event => {
-    event.preventDefault();
+    event.preventDefault(); //prevent the default properties of form submit
     const app = "";
     if (!this.state.loading) {
       this.setState(
@@ -135,7 +137,7 @@ class SignIn extends React.Component {
               loading: false,
               success: true
             });
-          }, 7000);
+          }, 10000);
         }
       );
     }
@@ -212,13 +214,6 @@ class SignIn extends React.Component {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              {/* <Typography
-              variant="caption"
-              color="error"
-              gutterBottom
-              align="center">
-              Invalid User id and Password
-            </Typography> */}
               <Button
                 type="submit"
                 fullWidth

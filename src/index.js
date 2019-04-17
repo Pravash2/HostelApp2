@@ -1,7 +1,9 @@
+//importing the Packages module
 import React from "react";
 import ReactDOM from "react-dom";
 import { Route, Link, BrowserRouter as Router, Switch } from "react-router-dom";
 
+//importing the necessary files
 import "./styles.css";
 import App from "./App";
 import Login from "./Login";
@@ -13,6 +15,7 @@ import Warden from "./Warden/Warden";
 import securityGuard from "./SecurityGuard/SecurityGuard";
 import Register from "./Register";
 
+//Routing the Component
 const routing = (
   <Router>
     <div>
@@ -31,5 +34,7 @@ const routing = (
   </Router>
 );
 
+//selecting the root id of html tag present in public/index.html page
 const rootElement = document.getElementById("root");
+//combining the routing and rootElement and placing html page
 ReactDOM.render(routing, rootElement);
