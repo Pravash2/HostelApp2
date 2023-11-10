@@ -8,7 +8,7 @@
     "@material-ui/core": "3.9.2",
     "@material-ui/icons": "3.0.2",
     "address": "1.0.3",
-    "axios": "0.18.0",
+    "axios": "1.6.0",
     "get-ip-addresses": "1.1.0",
     "jwt-decode": "2.2.0",
     "react": "16.8.3",
